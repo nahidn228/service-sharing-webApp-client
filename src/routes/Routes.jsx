@@ -4,12 +4,12 @@ import AddService from "../pages/AddService";
 import AllServices from "../pages/AllServices";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
-import BidRequests from "../pages/BidRequests";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
-import MyBids from "../pages/MyBids";
+import MyBookedServices from "../pages/MyBookedServices";
 import MyPostedServices from "../pages/MyPostedServices";
 import ServiceDetails from "../pages/ServiceDetails";
+import ServiceRequests from "../pages/ServiceRequests";
 import UpdateJob from "../pages/UpdateJob";
 import PrivateRoute from "./PrivateRoute";
 const router = createBrowserRouter([
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path: "/registration",
+        path: "/register",
         element: <Register></Register>,
       },
       {
@@ -59,10 +59,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/my-bids",
+        path: "/my-BookedService",
         element: (
           <PrivateRoute>
-            <MyBids></MyBids>
+            <MyBookedServices></MyBookedServices>
           </PrivateRoute>
         ),
       },
@@ -75,10 +75,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/bid-requests",
+        path: "/service-requests",
         element: (
           <PrivateRoute>
-            <BidRequests></BidRequests>
+            <ServiceRequests></ServiceRequests>
           </PrivateRoute>
         ),
       },

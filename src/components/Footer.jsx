@@ -1,12 +1,12 @@
-import logo from '../assets/images/Logo1.png'
+import logo from '../assets/images/logooooo.png'
 const Footer = () => {
   return (
     <footer className='bg-white shadow-sm'>
       <hr />
       <div className='container px-6 py-8 mx-auto'>
         <div className='flex flex-col items-center text-center'>
-          <div className='flex gap-2 items-center text-black'>
-            <img className='w-auto h-7' src={logo} alt='' />
+          <div className='flex gap-2 items-center text-black font-semibold'>
+            <img className='w-14 h-auto' src={logo} alt='' />
             <span>Digital World Technology</span>
           </div>
 

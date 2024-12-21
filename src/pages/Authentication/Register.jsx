@@ -2,7 +2,7 @@ import Lottie from "lottie-react";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/Logo1.png";
+import logo from "../../assets/images/logooooo.png";
 import registerLottieData from "../../assets/register.json";
 import { AuthContext } from "../../providers/AuthProvider";
 
@@ -18,49 +18,45 @@ const Registration = () => {
     const name = form.name.value;
     const photo = form.photo.value;
     const pass = form.password.value;
-    console.log({ email, pass, name, photo });
+
     try {
-      //2. User Registration
+      // User Registration
       const result = await createUser(email, pass);
-      console.log(result);
       await updateUserProfile(name, photo);
       setUser({ ...result.user, photoURL: photo, displayName: name });
       toast.success("Signup Successful");
       navigate("/");
     } catch (err) {
-      console.log(err);
       toast.error(err?.message);
     }
   };
 
-  // Google Signin
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle();
-
       toast.success("Signin Successful");
       navigate("/");
     } catch (err) {
-      console.log(err);
       toast.error(err?.message);
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-306px)] py-12 bg-white container px-4 mx-auto">
-      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
-        <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
-          <div className="flex justify-center mx-auto">
-            <img className="w-10 h-auto sm:h-8" src={logo} alt="" />
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r  py-12 px-4">
+      <div className="flex items-center w-full max-w-xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl lg:max-w-5xl">
+        <div className="w-full px-8 py-8 md:px-10 lg:w-1/2">
+          <div className="flex justify-center mx-auto mb-6">
+            <img className="w-14 h-auto" src={logo} alt="Logo" />
           </div>
 
-          <p className="mt-3 text-xl text-center text-black ">
-            Get Your Free Account Now.
+          <p className="mt-3 text-2xl text-center text-black font-semibold">
+            Create Your Free Account
           </p>
 
+          {/* Google Sign-in Button */}
           <div
             onClick={handleGoogleSignIn}
-            className="flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 "
+            className="flex cursor-pointer items-center justify-center mt-6 text-gray-600 transition-colors duration-300 transform border rounded-xl hover:bg-gray-100 shadow-md"
           >
             <div className="px-4 py-2">
               <svg className="w-6 h-6" viewBox="0 0 40 40">
@@ -82,111 +78,94 @@ const Registration = () => {
                 />
               </svg>
             </div>
-
-            <span className="w-5/6 px-4 py-3 font-bold text-center">
+            <span className="w-5/6 px-4 py-3 font-semibold text-center">
               Sign in with Google
             </span>
           </div>
 
-          <div className="flex items-center justify-between mt-4">
-            <span className="w-1/5 border-b  lg:w-1/4"></span>
-
-            <div className="text-xs text-center text-black uppercase  hover:underline">
-              or Registration with email
+          <div className="flex items-center justify-between mt-6">
+            <span className="w-1/5 border-b lg:w-1/4"></span>
+            <div className="text-sm text-center text-black uppercase hover:underline">
+              or Register with Email
             </div>
-
-            <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
+            <span className="w-1/5 border-b lg:w-1/4"></span>
           </div>
-          <form onSubmit={handleSignUp}>
-            <div className="mt-4">
-              <label
-                className="block mb-2 text-sm font-medium text-black "
-                htmlFor="name"
-              >
-                Username
+
+          {/* Registration Form */}
+          <form onSubmit={handleSignUp} className="mt-6 space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-900" htmlFor="name">
+                Full Name
               </label>
               <input
                 id="name"
-                autoComplete="name"
                 name="name"
-                className="block w-full px-4 py-2 text-black bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
+                autoComplete="name"
+                className="block w-full px-4 py-2 text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
-            <div className="mt-4">
-              <label
-                className="block mb-2 text-sm font-medium text-black "
-                htmlFor="photo"
-              >
+
+            <div>
+              <label className="block text-sm font-medium text-gray-900" htmlFor="photo">
                 Photo URL
               </label>
               <input
                 id="photo"
-                autoComplete="photo"
                 name="photo"
-                className="block w-full px-4 py-2 text-black bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
+                autoComplete="photo"
+                className="block w-full px-4 py-2 text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
-            <div className="mt-4">
-              <label
-                className="block mb-2 text-sm font-medium text-black "
-                htmlFor="LoggingEmailAddress"
-              >
+
+            <div>
+              <label className="block text-sm font-medium text-gray-900" htmlFor="email">
                 Email Address
               </label>
               <input
-                id="LoggingEmailAddress"
-                autoComplete="email"
+                id="email"
                 name="email"
-                className="block w-full px-4 py-2 text-black bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="email"
+                autoComplete="email"
+                className="block w-full px-4 py-2 text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
-            <div className="mt-4">
-              <div className="flex justify-between">
-                <label
-                  className="block mb-2 text-sm font-medium text-black "
-                  htmlFor="loggingPassword"
-                >
-                  Password
-                </label>
-              </div>
-
+            <div>
+              <label className="block text-sm font-medium text-gray-900" htmlFor="password">
+                Password
+              </label>
               <input
-                id="loggingPassword"
-                autoComplete="current-password"
+                id="password"
                 name="password"
-                className="block w-full px-4 py-2 text-black bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="password"
+                autoComplete="current-password"
+                className="block w-full px-4 py-2 text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
-            <div className="mt-6">
+
+            <div>
               <button
                 type="submit"
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                className="w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Sign Up
               </button>
             </div>
           </form>
 
-          <div className="flex items-center justify-between mt-4">
-            <span className="w-1/5 border-b  md:w-1/4"></span>
-
-            <Link
-              to="/login"
-              className="text-xs text-black uppercase  hover:underline"
-            >
-              or sign in
+          <p className="mt-6 text-sm text-center text-gray-500">
+            Already have an account?{" "}
+            <Link to="/login" className="font-medium text-blue-600 hover:underline">
+              Log In
             </Link>
-
-            <span className="w-1/5 border-b  md:w-1/4"></span>
-          </div>
+          </p>
         </div>
-        <div className="lg:w-1/2 flex justify-center">
-          <Lottie animationData={registerLottieData} className="w-full " />
+
+        {/* Lottie Animation */}
+        <div className="hidden lg:block lg:w-1/2">
+          <Lottie animationData={registerLottieData} loop={true} />
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../assets/images/Logo1.png";
+import { NavLink } from "react-router-dom";
+import logo from "../assets/images/logooooo.png";
 import { AuthContext } from "../providers/AuthProvider";
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -14,23 +15,30 @@ const Navbar = () => {
       document.body.classList.toggle("dark", savedTheme === "dark");
     }
   }, []);
+
   const handleThemeToggle = () => {
     const newTheme = !isDarkMode;
     setIsDarkMode(newTheme);
-    // Store the selected theme in localStorage
     localStorage.setItem("theme", newTheme ? "dark" : "light");
-    // Toggle the dark mode class on the body element
     document.body.classList.toggle("dark", newTheme);
   };
+
   return (
-    <div className="navbar bg-white  shadow-sm container px-4 mx-auto">
-      <div className="flex-1 text-black">
-        <Link to="/" className="flex gap-2 items-center">
-          <img className="w-10 h-auto" src={logo} alt="" />
-          <span className="font-bold">Digital World</span>
-        </Link>
+    <div className="navbar bg-white dark:bg-gray-900 shadow-sm container md:px-4 mx-auto ">
+      {/* Logo */}
+      <div className="flex-1">
+        <NavLink
+          to="/"
+          className="flex items-center gap-2 text-black dark:text-gray-200"
+        >
+          <img className="w-14 h-auto" src={logo} alt="Logo" />
+          <span className="text-xl font-bold">Digital World</span>
+        </NavLink>
       </div>
-      <div className="flex-none">
+
+      {/* Navigation Links */}
+      <div className="flex-none flex items-center gap-0 md:gap-4">
+        {/* Theme Toggle */}
         <div>
           <label className="grid cursor-pointer place-items-center">
             <input
@@ -70,21 +78,43 @@ const Navbar = () => {
             </svg>
           </label>
         </div>
-        <ul className="menu menu-horizontal px-1 text-black">
+
+        {/* Links */}
+        <ul className="menu menu-horizontal px-1 text-black dark:text-gray-200 flex items-center gap-1">
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `hover:text-blue-500 ${isActive ? "text-blue-500" : ""} hidden md:flex`
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/services">All Services</Link>
+            <NavLink
+              to="/services"
+              className={({ isActive }) =>
+                `hover:text-blue-500 ${isActive ? "text-blue-500" : ""}`
+              }
+            >
+              All Services
+            </NavLink>
           </li>
 
           {!user && (
             <li>
-              <Link to="/login">Login</Link>
+              <NavLink
+                to="/login"
+                className="btn bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2 font-medium shadow-md"
+              >
+                Login
+              </NavLink>
             </li>
           )}
         </ul>
 
+        {/* User Dropdown */}
         {user && (
           <div className="dropdown dropdown-end z-50">
             <div
@@ -92,36 +122,37 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div title={user?.displayName} className="w-10 rounded-full">
+              <div
+                title={user?.displayName}
+                className="w-10 h-10 rounded-full border-2 border-blue-500"
+              >
                 <img
                   referrerPolicy="no-referrer"
-                  alt="User Profile Photo"
+                  alt="User Profile"
                   src={user?.photoURL}
                 />
               </div>
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-black"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white dark:bg-gray-800 rounded-box w-52 text-black dark:text-gray-200"
             >
               <li>
-                <Link to="/add-service" className="justify-between">
-                  Add Service
-                </Link>
+                <NavLink to="/add-service">Add Service</NavLink>
               </li>
               <li>
-                <Link to="/my-posted-jobs">My Posted Services</Link>
+                <NavLink to="/my-posted-jobs">My Posted Services</NavLink>
               </li>
               <li>
-                <Link to="/my-bids">My Bids</Link>
+                <NavLink to="/my-BookedService">My Booked Service</NavLink>
               </li>
               <li>
-                <Link to="/bid-requests">Bid Requests</Link>
+                <NavLink to="/service-requests">Service Requests</NavLink>
               </li>
               <li className="mt-2">
                 <button
                   onClick={logOut}
-                  className="bg-gray-200 block text-center text-gray-800"
+                  className="w-full bg-red-500 hover:bg-red-600 text-white rounded-md px-4 py-2 font-medium"
                 >
                   Logout
                 </button>
