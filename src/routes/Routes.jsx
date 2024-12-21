@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/my-posted-jobs",
+        path: "/my-posted-Services",
         element: (
           <PrivateRoute>
             <MyPostedServices></MyPostedServices>

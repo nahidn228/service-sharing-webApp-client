@@ -1,9 +1,55 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 const AddService = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  console.log(user);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const title = form.title.value;
+    const email = form.email.value;
+    const deadline = startDate;
+    const category = form.category.value;
+    const min_price = form.min_price.value;
+    const max_price = form.max_price.value;
+    const description = form.description.value;
+
+    const formData = {
+      title,
+      buyer: {
+        email,
+        name: user?.displayName,
+        photo: user?.photoURL,
+      },
+      deadline,
+      category,
+      min_price,
+      max_price,
+      description,
+      bid_count: 0,
+    };
+    console.table({ formData });
+    // try {
+    //   //make a post request
+    //   const { data } = await axios.post(
+    //     `${import.meta.env.VITE_API_URL}/add-job`,
+    //     formData
+    //   );
+    //   console.log(data);
+    //   form.reset();
+    //   toast.success("Data Added Successfully!!!");
+    //   navigate("/my-posted-Services");
+    // } catch (err) {
+    //   console.log(err);
+    //   toast.error(err.message);
+    // }
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 via-white to-blue-50">
@@ -14,11 +60,14 @@ const AddService = () => {
         <p className="text-sm text-gray-500 text-center mt-2 mb-6">
           Fill out the details below to post a new service job.
         </p>
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Job Title */}
             <div>
-              <label className="block text-sm font-medium text-gray-600" htmlFor="job_title">
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="job_title"
+              >
                 Job Title
               </label>
               <input
@@ -32,7 +81,10 @@ const AddService = () => {
 
             {/* Email Address */}
             <div>
-              <label className="block text-sm font-medium text-gray-600" htmlFor="emailAddress">
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="emailAddress"
+              >
                 Email Address
               </label>
               <input
@@ -46,7 +98,9 @@ const AddService = () => {
 
             {/* Deadline */}
             <div>
-              <label className="block text-sm font-medium text-gray-600">Deadline</label>
+              <label className="block text-sm font-medium text-gray-600">
+                Deadline
+              </label>
               <DatePicker
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
                 selected={startDate}
@@ -56,7 +110,10 @@ const AddService = () => {
 
             {/* Category */}
             <div>
-              <label className="block text-sm font-medium text-gray-600" htmlFor="category">
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="category"
+              >
                 Category
               </label>
               <select
@@ -72,7 +129,10 @@ const AddService = () => {
 
             {/* Minimum Price */}
             <div>
-              <label className="block text-sm font-medium text-gray-600" htmlFor="min_price">
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="min_price"
+              >
                 Minimum Price
               </label>
               <input
@@ -86,7 +146,10 @@ const AddService = () => {
 
             {/* Maximum Price */}
             <div>
-              <label className="block text-sm font-medium text-gray-600" htmlFor="max_price">
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="max_price"
+              >
                 Maximum Price
               </label>
               <input
@@ -101,7 +164,10 @@ const AddService = () => {
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-gray-600" htmlFor="description">
+            <label
+              className="block text-sm font-medium text-gray-600"
+              htmlFor="description"
+            >
               Description
             </label>
             <textarea

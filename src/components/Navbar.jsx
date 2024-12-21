@@ -32,7 +32,7 @@ const Navbar = () => {
           className="flex items-center gap-2 text-black dark:text-gray-200"
         >
           <img className="w-14 h-auto" src={logo} alt="Logo" />
-          <span className="text-xl font-bold">Digital World</span>
+          <span className="text-xl font-bold hidden md:flex">Digital World</span>
         </NavLink>
       </div>
 
@@ -85,7 +85,9 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `hover:text-blue-500 ${isActive ? "text-blue-500" : ""} hidden md:flex`
+                `hover:text-blue-500 ${
+                  isActive ? "text-blue-500" : ""
+                } hidden md:flex`
               }
             >
               Home
@@ -98,7 +100,7 @@ const Navbar = () => {
                 `hover:text-blue-500 ${isActive ? "text-blue-500" : ""}`
               }
             >
-              All Services
+              Services
             </NavLink>
           </li>
 
@@ -117,21 +119,8 @@ const Navbar = () => {
         {/* User Dropdown */}
         {user && (
           <div className="dropdown dropdown-end z-50">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div
-                title={user?.displayName}
-                className="w-10 h-10 rounded-full border-2 border-blue-500"
-              >
-                <img
-                  referrerPolicy="no-referrer"
-                  alt="User Profile"
-                  src={user?.photoURL}
-                />
-              </div>
+            <div tabIndex={0} role="button" className="btn btn-ghost">
+              <div className="btn btn-ghost text-black">Dashboard</div>
             </div>
             <ul
               tabIndex={0}
@@ -158,6 +147,24 @@ const Navbar = () => {
                 </button>
               </li>
             </ul>
+          </div>
+        )}
+        {user && (
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle avatar"
+          >
+            <div
+              title={user?.displayName}
+              className="w-10 h-10 rounded-full border-2 border-blue-500"
+            >
+              <img
+                referrerPolicy="no-referrer"
+                alt="User Profile"
+                src={user?.photoURL}
+              />
+            </div>
           </div>
         )}
       </div>
