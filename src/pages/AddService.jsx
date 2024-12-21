@@ -1,6 +1,8 @@
+import axios from "axios";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 const AddService = () => {
@@ -12,15 +14,17 @@ const AddService = () => {
     e.preventDefault();
 
     const form = e.target;
-    const title = form.title.value;
+    const name = form.title.value;
     const serviceImg = form.serviceImg.value;
     const deadline = startDate;
     const category = form.category.value;
-    const min_price = form.min_price.value;
+    const price = form.min_price.value;
+    const area = form.area.value;
     const description = form.description.value;
 
     const formData = {
-      title,
+      name,
+      area,
       serviceImg,
       buyer: {
         email: user?.email,
@@ -29,24 +33,24 @@ const AddService = () => {
       },
       deadline,
       category,
-      min_price,
+      price,
       description,
     };
-    console.table({ formData });
-    // try {
-    //   //make a post request
-    //   const { data } = await axios.post(
-    //     `${import.meta.env.VITE_API_URL}/add-job`,
-    //     formData
-    //   );
-    //   console.log(data);
-    //   form.reset();
-    //   toast.success("Data Added Successfully!!!");
-    //   navigate("/my-posted-Services");
-    // } catch (err) {
-    //   console.log(err);
-    //   toast.error(err.message);
-    // }
+
+    try {
+      //make a post request
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/add-service`,
+        formData
+      );
+      console.log(data);
+      form.reset();
+      toast.success("Data Added Successfully!!!");
+      navigate("/my-posted-Services");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
   };
 
   return (
@@ -76,6 +80,7 @@ const AddService = () => {
                 placeholder="Enter Service title"
               />
             </div>
+
             {/* Image URL of the Service  */}
             <div>
               <label
@@ -91,20 +96,19 @@ const AddService = () => {
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
                 placeholder="Enter your Image URL of the Service "
               />
-            </div>{" "}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+            </div>
             {/* Deadline */}
             <div>
-              <label className="block text-sm font-medium text-gray-600">
+              <label className="block text-sm font-medium text-gray-600 ">
                 Deadline
               </label>
-              <DatePicker
-                className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-              />
+              <div className="w-full">
+                <DatePicker
+                  className="w-full  mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                />
+              </div>
             </div>
 
             {/* Category */}
@@ -142,10 +146,33 @@ const AddService = () => {
                 placeholder="Enter minimum price"
               />
             </div>
+
+            {/* Service Area */}
+            <div>
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="category"
+              >
+                Service Area
+              </label>
+              <select
+                name="area"
+                id="area"
+                className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+              >
+                <option value="Web Development">Dhaka</option>
+                <option value="Graphics Design">Chattogram</option>
+                <option value="Digital Marketing">Khulna</option>
+                <option value="Digital Marketing">Barisal</option>
+                <option value="Digital Marketing">Sylhet</option>
+                <option value="Digital Marketing">Rangpur</option>
+                <option value="Digital Marketing">Mymensingh</option>
+              </select>
+            </div>
           </div>
 
           {/* Description */}
-          <div>
+          <div className="my-4">
             <label
               className="block text-sm font-medium text-gray-600"
               htmlFor="description"
@@ -167,7 +194,7 @@ const AddService = () => {
               type="submit"
               className="px-6 py-3 text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
             >
-              Post Job
+              Add Service
             </button>
           </div>
         </form>

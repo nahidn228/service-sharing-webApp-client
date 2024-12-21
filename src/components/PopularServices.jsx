@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const PopularServices = () => {
   const services = [
@@ -76,9 +76,10 @@ const PopularServices = () => {
               </div>
               <div className="mt-4">
                 {/* View Details Button */}
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
+                <Link  to={`/service/1`}><button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
                   View Details
-                </button>
+                </button></Link>
+                
               </div>
             </div>
           </div>
