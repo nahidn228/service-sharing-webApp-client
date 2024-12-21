@@ -3,7 +3,7 @@ import JobCard from '../components/JobCard'
 
 const AllJobs = () => {
   return (
-    <div className='container px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between'>
+    <div className='container bg-white px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between'>
       <div>
         <div className='flex flex-col md:flex-row justify-center items-center gap-5 '>
           <div>

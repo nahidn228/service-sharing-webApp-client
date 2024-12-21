@@ -4,8 +4,8 @@ import TabCategories from '../components/TabCategories'
 const Home = () => {
   return (
     <div>
-      <Carousel />
-      <TabCategories />
+      <Carousel></Carousel>
+      <TabCategories></TabCategories>
     </div>
   )
 }
