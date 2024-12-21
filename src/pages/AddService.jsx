@@ -13,26 +13,24 @@ const AddService = () => {
 
     const form = e.target;
     const title = form.title.value;
-    const email = form.email.value;
+    const serviceImg = form.serviceImg.value;
     const deadline = startDate;
     const category = form.category.value;
     const min_price = form.min_price.value;
-    const max_price = form.max_price.value;
     const description = form.description.value;
 
     const formData = {
       title,
+      serviceImg,
       buyer: {
-        email,
+        email: user?.email,
         name: user?.displayName,
         photo: user?.photoURL,
       },
       deadline,
       category,
       min_price,
-      max_price,
       description,
-      bid_count: 0,
     };
     console.table({ formData });
     // try {
@@ -55,47 +53,48 @@ const AddService = () => {
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 via-white to-blue-50">
       <section className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-gray-700 text-center">
-          Post a Job
+          Add a Service
         </h2>
         <p className="text-sm text-gray-500 text-center mt-2 mb-6">
           Fill out the details below to post a new service job.
         </p>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Job Title */}
+            {/* service Title */}
             <div>
               <label
                 className="block text-sm font-medium text-gray-600"
                 htmlFor="job_title"
               >
-                Job Title
+                Service Name
               </label>
               <input
-                id="job_title"
-                name="job_title"
+                id="service_title"
+                name="title"
                 type="text"
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
-                placeholder="Enter job title"
+                placeholder="Enter Service title"
               />
             </div>
-
-            {/* Email Address */}
+            {/* Image URL of the Service  */}
             <div>
               <label
                 className="block text-sm font-medium text-gray-600"
                 htmlFor="emailAddress"
               >
-                Email Address
+                Image URL of the Service
               </label>
               <input
                 id="emailAddress"
-                name="email"
-                type="email"
+                name="serviceImg"
+                type="url"
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
-                placeholder="Enter your email"
+                placeholder="Enter your Image URL of the Service "
               />
-            </div>
+            </div>{" "}
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
             {/* Deadline */}
             <div>
               <label className="block text-sm font-medium text-gray-600">
@@ -127,13 +126,13 @@ const AddService = () => {
               </select>
             </div>
 
-            {/* Minimum Price */}
+            {/*  Price */}
             <div>
               <label
                 className="block text-sm font-medium text-gray-600"
                 htmlFor="min_price"
               >
-                Minimum Price
+                Price
               </label>
               <input
                 id="min_price"
@@ -141,23 +140,6 @@ const AddService = () => {
                 type="number"
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
                 placeholder="Enter minimum price"
-              />
-            </div>
-
-            {/* Maximum Price */}
-            <div>
-              <label
-                className="block text-sm font-medium text-gray-600"
-                htmlFor="max_price"
-              >
-                Maximum Price
-              </label>
-              <input
-                id="max_price"
-                name="max_price"
-                type="number"
-                className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
-                placeholder="Enter maximum price"
               />
             </div>
           </div>

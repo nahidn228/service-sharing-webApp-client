@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const MyPostedServices = () => {
+const ManageService = () => {
   return (
     <section className=" pt-12 bg-white container px-4 mx-auto">
       <div className="flex items-center gap-x-3">
-        <h2 className="text-lg font-medium text-black ">My Posted Jobs</h2>
+        <h2 className="text-lg font-medium text-black ">Manage Services</h2>
 
         <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
           4 Job
@@ -137,4 +137,4 @@ const MyPostedServices = () => {
   );
 };
 
-export default MyPostedServices;
+export default ManageService;

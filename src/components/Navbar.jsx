@@ -86,8 +86,8 @@ const Navbar = () => {
               to="/"
               className={({ isActive }) =>
                 `hover:text-blue-500 ${
-                  isActive ? "text-blue-500" : ""
-                } hidden md:flex`
+                  isActive ? "bg-blue-300  font-medium" : ""
+                } hidden md:flex btn btn-sm md:btn-md`
               }
             >
               Home
@@ -97,7 +97,7 @@ const Navbar = () => {
             <NavLink
               to="/services"
               className={({ isActive }) =>
-                `hover:text-blue-500 ${isActive ? "text-blue-500" : ""}`
+                `hover:text-blue-500 ${isActive ? "bg-blue-300  font-medium" : ""} btn btn-sm md:btn-md`
               }
             >
               Services
@@ -108,7 +108,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/login"
-                className="btn bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2 font-medium shadow-md"
+                className="btn btn-sm md:btn-md bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2 font-medium shadow-md"
               >
                 Login
               </NavLink>
@@ -119,8 +119,8 @@ const Navbar = () => {
         {/* User Dropdown */}
         {user && (
           <div className="dropdown dropdown-end z-50">
-            <div tabIndex={0} role="button" className="btn btn-ghost">
-              <div className="btn btn-ghost text-black">Dashboard</div>
+            <div tabIndex={0} role="button">
+              <div className=" text-black btn btn-sm md:btn-md">Dashboard</div>
             </div>
             <ul
               tabIndex={0}
@@ -130,18 +130,18 @@ const Navbar = () => {
                 <NavLink to="/add-service">Add Service</NavLink>
               </li>
               <li>
-                <NavLink to="/my-posted-jobs">My Posted Services</NavLink>
+                <NavLink to="/manageService">Manage Service</NavLink>
               </li>
               <li>
-                <NavLink to="/my-BookedService">My Booked Service</NavLink>
+                <NavLink to="/my-BookedService">Booked Service</NavLink>
               </li>
               <li>
-                <NavLink to="/service-requests">Service Requests</NavLink>
+                <NavLink to="/service-requests">Service To-Do</NavLink>
               </li>
               <li className="mt-2">
                 <button
                   onClick={logOut}
-                  className="w-full bg-red-500 hover:bg-red-600 text-white rounded-md px-4 py-2 font-medium"
+                  className=" bg-red-500 hover:bg-red-600 text-white rounded-md   btn btn-sm"
                 >
                   Logout
                 </button>
@@ -167,6 +167,17 @@ const Navbar = () => {
             </div>
           </div>
         )}
+
+        {
+          user &&  
+          <div><button
+          onClick={logOut}
+          className="w-full bg-red-500 hover:bg-red-600 text-white rounded-md px-4 py-2 font-medium"
+        >
+          Logout
+        </button></div>
+       
+        }
       </div>
     </div>
   );

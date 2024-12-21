@@ -6,8 +6,8 @@ import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
+import ManageService from "../pages/ManageService";
 import MyBookedServices from "../pages/MyBookedServices";
-import MyPostedServices from "../pages/MyPostedServices";
 import ServiceDetails from "../pages/ServiceDetails";
 import ServiceRequests from "../pages/ServiceRequests";
 import UpdateJob from "../pages/UpdateJob";
@@ -67,10 +67,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/my-posted-Services",
+        path: "/manageService",
         element: (
           <PrivateRoute>
-            <MyPostedServices></MyPostedServices>
+            <ManageService></ManageService>
           </PrivateRoute>
         ),
       },
