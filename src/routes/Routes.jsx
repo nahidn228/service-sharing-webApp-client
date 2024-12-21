@@ -1,20 +1,20 @@
-import { createBrowserRouter } from 'react-router-dom'
-import Main from '../layouts/Main'
-import Home from '../pages/Home'
-import Login from '../pages/Authentication/Login'
-import Register from '../pages/Authentication/Register'
-import JobDetails from '../pages/JobDetails'
-import AddJob from '../pages/AddJob'
-import ErrorPage from '../pages/ErrorPage'
-import MyPostedJobs from '../pages/MyPostedJobs'
-import UpdateJob from '../pages/UpdateJob'
-import PrivateRoute from './PrivateRoute'
-import MyBids from '../pages/MyBids'
-import BidRequests from '../pages/BidRequests'
-import AllJobs from '../pages/AllJobs'
+import { createBrowserRouter } from "react-router-dom";
+import Main from "../layouts/Main";
+import AddService from "../pages/AddService";
+import AllServices from "../pages/AllServices";
+import Login from "../pages/Authentication/Login";
+import Register from "../pages/Authentication/Register";
+import BidRequests from "../pages/BidRequests";
+import ErrorPage from "../pages/ErrorPage";
+import Home from "../pages/Home";
+import MyBids from "../pages/MyBids";
+import MyPostedServices from "../pages/MyPostedServices";
+import ServiceDetails from "../pages/ServiceDetails";
+import UpdateJob from "../pages/UpdateJob";
+import PrivateRoute from "./PrivateRoute";
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Main></Main>,
     errorElement: <ErrorPage />,
     children: [
@@ -23,27 +23,27 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: '/jobs',
-        element: <AllJobs></AllJobs>,
+        path: "/services",
+        element: <AllServices></AllServices>,
       },
       {
-        path: '/login',
+        path: "/login",
         element: <Login></Login>,
       },
       {
-        path: '/registration',
+        path: "/registration",
         element: <Register></Register>,
       },
       {
-        path: '/job/:id',
+        path: "/service/:id",
         element: (
           <PrivateRoute>
-            <JobDetails></JobDetails>
+            <ServiceDetails></ServiceDetails>
           </PrivateRoute>
         ),
       },
       {
-        path: '/update/:id',
+        path: "/update/:id",
         element: (
           <PrivateRoute>
             <UpdateJob></UpdateJob>
@@ -51,15 +51,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/add-job',
+        path: "/add-service",
         element: (
           <PrivateRoute>
-            <AddJob></AddJob>
+            <AddService></AddService>
           </PrivateRoute>
         ),
       },
       {
-        path: '/my-bids',
+        path: "/my-bids",
         element: (
           <PrivateRoute>
             <MyBids></MyBids>
@@ -67,15 +67,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/my-posted-jobs',
+        path: "/my-posted-jobs",
         element: (
           <PrivateRoute>
-            <MyPostedJobs></MyPostedJobs>
+            <MyPostedServices></MyPostedServices>
           </PrivateRoute>
         ),
       },
       {
-        path: '/bid-requests',
+        path: "/bid-requests",
         element: (
           <PrivateRoute>
             <BidRequests></BidRequests>
@@ -84,6 +84,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-])
+]);
 
-export default router
+export default router;

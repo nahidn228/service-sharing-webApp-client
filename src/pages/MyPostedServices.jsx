@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const MyPostedJobs = () => {
+const MyPostedServices = () => {
   return (
     <section className=" pt-12 bg-white container px-4 mx-auto">
       <div className="flex items-center gap-x-3">
@@ -137,4 +137,4 @@ const MyPostedJobs = () => {
   );
 };
 
-export default MyPostedJobs;
+export default MyPostedServices;

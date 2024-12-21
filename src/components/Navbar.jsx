@@ -75,7 +75,7 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/jobs">All Jobs</Link>
+            <Link to="/services">All Services</Link>
           </li>
 
           {!user && (
@@ -105,12 +105,12 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52 text-black"
             >
               <li>
-                <Link to="/add-job" className="justify-between">
-                  Add Job
+                <Link to="/add-service" className="justify-between">
+                  Add Service
                 </Link>
               </li>
               <li>
-                <Link to="/my-posted-jobs">My Posted Jobs</Link>
+                <Link to="/my-posted-jobs">My Posted Services</Link>
               </li>
               <li>
                 <Link to="/my-bids">My Bids</Link>
