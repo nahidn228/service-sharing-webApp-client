@@ -1,117 +1,229 @@
-import { useState } from 'react'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+import axios from "axios";
+import { format } from "date-fns";
+import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet";
+import { toast } from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
+const AddService = () => {
+  const { id } = useParams();
+  const [startDate, setStartDate] = useState(new Date());
+  const [service, setService] = useState({});
 
-const UpdateService = () => {
-  const [startDate, setStartDate] = useState(new Date())
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchOneService = async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/service/${id}`
+      );
+      setService(data);
+    };
+    fetchOneService();
+  }, [id]);
+
+  console.log(service);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.title.value;
+    const serviceImg = form.serviceImg.value;
+    const deadline = startDate;
+    const category = form.category.value;
+    const price = form.price.value;
+    const area = form.area.value;
+    const description = form.description.value;
+    const formData = {
+      name,
+      area,
+      serviceImg,
+      deadline,
+      category,
+      price,
+      description,
+    };
+    console.log(formData);
+    try {
+      // make a put request
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_API_URL}/update-service/${id}`,
+        formData
+      );
+      console.log(data);
+      form.reset();
+      toast.success("Service Added Successfully!!!");
+      navigate("/manageService");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
+  };
 
   return (
-    <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
-        <Helmet>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 via-white to-blue-50">
+      <Helmet>
         <meta charSet="utf-8" />
-        <title>Update  - Digital World Technology</title>
-        <link rel="canonical" href="https://fullstackservice1.web.app" />
+        <title>Update your Service Here - Digital World Technology</title>
+        <link rel="canonical" href="" />
       </Helmet>
-      <section className=' p-2 md:p-6 mx-auto bg-white rounded-md shadow-md '>
-        <h2 className='text-lg font-semibold text-gray-700 capitalize '>
-          Update a Job
+      <section className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold text-gray-700 text-center">
+          Update Your Service:{" "}
+          <span className="text-blue-500">{service.name}</span>{" "}
         </h2>
-
-        <form>
-          <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
+        <p className="text-sm text-gray-500 text-center mt-2 mb-6">
+          Fill out the details below to update your service.
+        </p>
+        <form onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* service Title */}
             <div>
-              <label className='text-gray-700 ' htmlFor='job_title'>
-                Job Title
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="job_title"
+              >
+                Service Name
               </label>
               <input
-                id='job_title'
-                name='job_title'
-                type='text'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                id="service_title"
+                name="title"
+                type="text"
+                defaultValue={service?.name}
+                className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+                placeholder="Enter Service title"
               />
             </div>
 
+            {/* Image URL of the Service  */}
             <div>
-              <label className='text-gray-700 ' htmlFor='emailAddress'>
-                Email Address
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="emailAddress"
+              >
+                Image URL of the Service
               </label>
               <input
-                id='emailAddress'
-                type='email'
-                name='email'
-                disabled
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                id="serviceImg"
+                name="serviceImg"
+                defaultValue={service?.serviceImg}
+                type="url"
+                className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+                placeholder="Enter your Image URL of the Service "
               />
             </div>
-            <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700'>Deadline</label>
-
-              <DatePicker
-                className='border p-2 rounded-md'
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-              />
+            {/* Deadline */}
+            <div>
+              <label className="block text-sm font-medium text-gray-600 ">
+                Deadline
+              </label>
+              <div className="w-full">
+                {service?.deadline && (
+                  <DatePicker
+                    className="w-full  mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+                    selected={startDate}
+                    value={format(new Date(service.deadline), "P")}
+                    onChange={(date) => setStartDate(date)}
+                  />
+                )}
+              </div>
             </div>
 
-            <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700 ' htmlFor='category'>
+            {/* Category */}
+            <div>
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="category"
+              >
                 Category
               </label>
               <select
-                name='category'
-                id='category'
-                className='border p-2 rounded-md'
+                name="category"
+                id="category"
+                value={service?.category}
+                className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
               >
-                <option value='Web Development'>Web Development</option>
-                <option value='Graphics Design'>Graphics Design</option>
-                <option value='Digital Marketing'>Digital Marketing</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Graphics Design">Graphics Design</option>
+                <option value="Digital Marketing">Digital Marketing</option>
               </select>
             </div>
+
+            {/*  Price */}
             <div>
-              <label className='text-gray-700 ' htmlFor='min_price'>
-                Minimum Price
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="price"
+              >
+                Price
               </label>
               <input
-                id='min_price'
-                name='min_price'
-                type='number'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                id="price"
+                name="price"
+                defaultValue={service.price}
+                type="number"
+                className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+                placeholder="Enter minimum price"
               />
             </div>
 
+            {/* Service Area */}
             <div>
-              <label className='text-gray-700 ' htmlFor='max_price'>
-                Maximum Price
+              <label
+                className="block text-sm font-medium text-gray-600"
+                htmlFor="area"
+              >
+                Service Area
               </label>
-              <input
-                id='max_price'
-                name='max_price'
-                type='number'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-              />
+              <select
+                name="area"
+                id="area"
+                value={service.area}
+                className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+              >
+                <option value="Dhaka">Dhaka</option>
+                <option value="Chattogram">Chattogram</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Barisal">Barisal</option>
+                <option value="Sylhet">Sylhet</option>
+                <option value="Rangpur">Rangpur</option>
+                <option value="Mymensingh">Mymensingh</option>
+              </select>
             </div>
           </div>
-          <div className='flex flex-col gap-2 mt-4'>
-            <label className='text-gray-700 ' htmlFor='description'>
+
+          {/* Description */}
+          <div className="my-4">
+            <label
+              className="block text-sm font-medium text-gray-600"
+              htmlFor="description"
+            >
               Description
             </label>
             <textarea
-              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-              name='description'
-              id='description'
-              cols='30'
+              id="description"
+              name="description"
+              defaultValue={service.description}
+              rows="4"
+              className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+              placeholder="Describe the job details..."
             ></textarea>
           </div>
-          <div className='flex justify-end mt-6'>
-            <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
-              Save
+
+          {/* Save Button */}
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className="px-6 py-3 text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+            >
+              Update Service
             </button>
           </div>
         </form>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default UpdateService
+export default AddService;
