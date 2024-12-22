@@ -2,14 +2,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import useAuth from "../hooks/useAuth";
 
 const ServiceDetails = () => {
+  const { user } = useAuth();
   const { id } = useParams();
   const [startDate, setStartDate] = useState(new Date());
   const [service, setService] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
+  console.log(user);
 
   useEffect(() => {
     const fetchOneService = async () => {
@@ -30,6 +34,43 @@ const ServiceDetails = () => {
     setIsModalOpen(false);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const bookingData = {
+      serviceId: service._id,
+      serviceName: service.name,
+      serviceImg: service.serviceImg,
+      providerEmail: service.buyer.email,
+      providerName: service.buyer.name,
+      userEmail: user.email,
+      userName: user.displayName,
+      serviceTakingDate: startDate,
+      specialInstruction: form.specialInstruction.value,
+      price: service.price,
+      serviceStatus: "pending",
+    };
+
+    console.log(bookingData);
+
+    try {
+      // make a post request
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/booked-service`,
+        bookingData
+      );
+      console.log(data);
+      form.reset();
+      toast.success("Service booked successfully!");
+      setIsModalOpen(false);
+    } catch (err) {
+      toast.error("Failed to book the service. Please try again.");
+      console.error(err);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-10 items-center min-h-[calc(100vh-306px)] md:max-w-screen-2xl mx-auto px-4 py-10 bg-gray-50">
       {/* Service Details */}
@@ -48,7 +89,7 @@ const ServiceDetails = () => {
           <img
             src={service.serviceImg}
             alt="Service"
-            className="w-full h-56 object-cover rounded-md mb-4"
+            className="w-full h-80 object-cover rounded-md mb-4"
           />
           <h1 className="text-3xl font-semibold text-black">{service.name}</h1>
           <p className="mt-4 text-base leading-6 text-black">
@@ -107,10 +148,10 @@ const ServiceDetails = () => {
               ✖
             </button>
             <h2 className="text-2xl font-semibold text-black capitalize mb-6">
-              Book this
+              Book Service :{" "}
               <span className="text-blue-600 font-bold">
                 <Typewriter
-                  words={[" Service"]}
+                  words={[`${service.name}`]}
                   loop={Infinity}
                   cursor
                   cursorStyle="|"
@@ -120,8 +161,9 @@ const ServiceDetails = () => {
                 />
               </span>
             </h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {/* Service ID */}
                 <div>
                   <label className="text-sm font-medium text-black">
                     Service ID
@@ -133,6 +175,7 @@ const ServiceDetails = () => {
                     className="block w-full px-4 py-2 mt-2 text-black bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none"
                   />
                 </div>
+                {/* Service Name */}
                 <div>
                   <label className="text-sm font-medium text-black">
                     Service Name
@@ -144,6 +187,19 @@ const ServiceDetails = () => {
                     className="block w-full px-4 py-2 mt-2 text-black bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none"
                   />
                 </div>
+                {/* Service Image URL */}
+                <div>
+                  <label className="text-sm font-medium text-black">
+                    Service Image URL
+                  </label>
+                  <input
+                    type="text"
+                    value={service.serviceImg}
+                    disabled
+                    className="block w-full px-4 py-2 mt-2 text-black bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none"
+                  />
+                </div>
+                {/*  Provider Email */}
                 <div>
                   <label className="text-sm font-medium text-black">
                     Provider Email
@@ -155,6 +211,7 @@ const ServiceDetails = () => {
                     className="block w-full px-4 py-2 mt-2 text-black bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none"
                   />
                 </div>
+                {/* Provider Name */}
                 <div>
                   <label className="text-sm font-medium text-black">
                     Provider Name
@@ -166,6 +223,44 @@ const ServiceDetails = () => {
                     className="block w-full px-4 py-2 mt-2 text-black bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none"
                   />
                 </div>
+                {/* Current User email */}
+                <div>
+                  <label className="text-sm font-medium text-black">
+                    Current User email
+                  </label>
+                  <input
+                    type="text"
+                    value={user?.email}
+                    disabled
+                    className="block w-full px-4 py-2 mt-2 text-black bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none"
+                  />
+                </div>
+                {/* Current User Name */}
+                <div>
+                  <label className="text-sm font-medium text-black">
+                    Current User Name
+                  </label>
+                  <input
+                    type="text"
+                    value={user?.displayName}
+                    disabled
+                    className="block w-full px-4 py-2 mt-2 text-black bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none"
+                  />
+                </div>
+                {/* Service Price */}
+                <div>
+                  <label className="text-sm font-medium text-black">
+                    Service Price
+                  </label>
+                  <input
+                    type="text"
+                    value={service?.price}
+                    disabled
+                    className="block w-full px-4 py-2 mt-2 text-black bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none"
+                  />
+                </div>
+
+                {/*  Service Taking Date */}
                 <div>
                   <label className="text-sm font-medium text-black">
                     Service Taking Date
@@ -176,16 +271,19 @@ const ServiceDetails = () => {
                     onChange={(date) => setStartDate(date)}
                   />
                 </div>
-                <div>
+                {/* Special Instruction */}
+                <div className="">
                   <label className="text-sm font-medium text-black">
                     Special Instruction
                   </label>
                   <textarea
+                    name="specialInstruction"
                     placeholder="Enter special instructions here..."
-                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                    className=" w-full px-4 py-2 mt-2 text-black bg-white border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                   />
                 </div>
               </div>
+              {/* Purchase Button */}
               <div className="mt-6 text-right">
                 <button
                   type="submit"
