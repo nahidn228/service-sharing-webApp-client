@@ -1,4 +1,24 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "react-datepicker/dist/react-datepicker.css";
+import useAuth from "../hooks/useAuth";
+
 const MyBookedServices = () => {
+  const { user } = useAuth();
+
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchAllServices = async () => {
+      const { data } = await axios.get(
+        `  ${import.meta.env.VITE_API_URL}/booked-services/${user?.email}`
+      );
+      setServices(data);
+    };
+    fetchAllServices();
+  }, [user]);
+
+  console.log(services);
   return (
     <section className="container px-4 mx-auto py-12">
       {/* Header Section */}
