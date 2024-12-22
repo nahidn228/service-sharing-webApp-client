@@ -37,8 +37,10 @@ const AddService = () => {
       description,
     };
 
+    console.log(formData);
+
     try {
-      //make a post request
+      // make a post request
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/add-service`,
         formData
@@ -46,7 +48,7 @@ const AddService = () => {
       console.log(data);
       form.reset();
       toast.success("Data Added Successfully!!!");
-      navigate("/my-posted-Services");
+      navigate("/manageService");
     } catch (err) {
       console.log(err);
       toast.error(err.message);
@@ -151,7 +153,7 @@ const AddService = () => {
             <div>
               <label
                 className="block text-sm font-medium text-gray-600"
-                htmlFor="category"
+                htmlFor="area"
               >
                 Service Area
               </label>
@@ -160,13 +162,13 @@ const AddService = () => {
                 id="area"
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
               >
-                <option value="Web Development">Dhaka</option>
-                <option value="Graphics Design">Chattogram</option>
-                <option value="Digital Marketing">Khulna</option>
-                <option value="Digital Marketing">Barisal</option>
-                <option value="Digital Marketing">Sylhet</option>
-                <option value="Digital Marketing">Rangpur</option>
-                <option value="Digital Marketing">Mymensingh</option>
+                <option value="Dhaka">Dhaka</option>
+                <option value="Chattogram">Chattogram</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Barisal">Barisal</option>
+                <option value="Sylhet">Sylhet</option>
+                <option value="Rangpur">Rangpur</option>
+                <option value="Mymensingh">Mymensingh</option>
               </select>
             </div>
           </div>

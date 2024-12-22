@@ -1,26 +1,31 @@
 /* eslint-disable react/prop-types */
+import { format } from "date-fns";
+import "react-datepicker/dist/react-datepicker.css";
 import { FaClock, FaDollarSign } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
   return (
     <Link
-      to={`/service/${service?.id}`} // Dynamic link based on the service ID
+      to={`/service/${service?._id}`}
       className="w-full max-w-2xl mx-auto p-5 bg-white dark:bg-gray-800 rounded-md shadow-md hover:scale-[1.05] hover:shadow-lg transition-transform"
     >
       {/* Service Image */}
       <img
-        src={service?.image}
+        src={service?.serviceImg}
         alt={service?.name}
         className="w-full h-56 object-cover rounded-md mb-4"
       />
 
       {/* Header */}
       <div className="flex items-center justify-between">
-        <span className="flex items-center gap-1 text-xs font-light text-gray-600 dark:text-gray-300">
-          <FaClock className="w-4 h-4 text-blue-500" />
-          Deadline: {service?.deadline}
-        </span>
+        {service?.deadline && (
+          <span className="flex items-center gap-1 text-xs font-light text-gray-600 dark:text-gray-300">
+            <FaClock className="w-4 h-4 text-blue-500" />
+            Deadline: {format(new Date(service.deadline), "P")}
+          </span>
+        )}
+
         <span className="px-3 py-1 text-[8px] text-blue-800 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-300 uppercase">
           {service?.category}
         </span>
@@ -37,7 +42,7 @@ const ServiceCard = ({ service }) => {
             : service?.description}
         </p>
 
-        {/* Pricing and Bids */}
+        {/* Pricing  */}
         <div className="mt-4 flex justify-between items-center">
           <p className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300">
             <FaDollarSign className="text-green-500" />${service?.price}
@@ -47,13 +52,13 @@ const ServiceCard = ({ service }) => {
         {/* Provider Info */}
         <div className="flex items-center mt-4">
           <img
-            src={service?.providerImage}
-            alt={service?.providerName}
+            src={service?.buyer?.photo}
+            alt={service?.buyer?.name}
             className="w-10 h-10 rounded-full object-cover"
           />
           <div className="ml-3">
             <p className="text-sm text-gray-700 dark:text-gray-300">
-              {service?.providerName}
+              {service?.buyer?.name}
             </p>
             <p className="text-xs text-gray-500">{service?.area}</p>
           </div>

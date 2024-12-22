@@ -16,7 +16,7 @@ const Home = () => {
         transition={{ duration: 0.8 }}
         key="carousel"
       >
-        <Carousel />
+        <Carousel></Carousel>
       </motion.div>
 
       {/* Popular Services */}
@@ -27,7 +27,7 @@ const Home = () => {
         transition={{ duration: 0.6 }}
         key="popular-services"
       >
-        <PopularServices />
+        <PopularServices></PopularServices>
       </motion.div>
 
       {/* Tab Categories */}
@@ -38,7 +38,7 @@ const Home = () => {
         transition={{ duration: 0.8 }}
         key="tab-categories"
       >
-        <TabCategories />
+        <TabCategories></TabCategories>
       </motion.div>
 
       {/* Why Choose Us */}
@@ -49,7 +49,7 @@ const Home = () => {
         transition={{ duration: 0.6 }}
         key="why-choose-us"
       >
-        <WhyChooseUs />
+        <WhyChooseUs></WhyChooseUs>
       </motion.div>
 
       {/* Testimonials */}
@@ -60,7 +60,7 @@ const Home = () => {
         transition={{ duration: 0.8 }}
         key="testimonials"
       >
-        <Testimonials />
+        <Testimonials></Testimonials>
       </motion.div>
     </div>
   );

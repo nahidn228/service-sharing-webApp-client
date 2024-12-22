@@ -1,28 +1,20 @@
 import { Link } from "react-router-dom";
-
+import  axios  from "axios";
+import { useEffect, useState } from "react";
 const PopularServices = () => {
-  const services = [
-    {
-      id: 1,
-      image: "https://via.placeholder.com/150", // Replace with actual service image URL
-      name: "Web Development",
-      description:
-        "Get your websites professionally built with modern technologies.",
-      providerImage: "https://via.placeholder.com/50", // Replace with provider image URL
-      providerName: "John Doe",
-      price: "$1200",
-    },
-    {
-      id: 2,
-      image: "https://via.placeholder.com/150",
-      name: "Graphic Design",
-      description: "Unique and stunning visuals for your brand.",
-      providerImage: "https://via.placeholder.com/50",
-      providerName: "Jane Smith",
-      price: "$800",
-    },
-    // Add up to 6 services
-  ];
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchAllServices = async () => {
+      const { data } = await axios.get(
+        `  ${import.meta.env.VITE_API_URL}/all-services`
+      );
+      setServices(data);
+    };
+    fetchAllServices();
+
+    
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-10">
