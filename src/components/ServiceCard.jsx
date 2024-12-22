@@ -45,7 +45,7 @@ const ServiceCard = ({ service }) => {
         {/* Pricing  */}
         <div className="mt-4 flex justify-between items-center">
           <p className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300">
-            <FaDollarSign className="text-green-500" />${service?.price}
+            <FaDollarSign className="text-green-500" />{service?.price}
           </p>
         </div>
 
