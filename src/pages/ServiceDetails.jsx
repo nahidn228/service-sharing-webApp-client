@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import useAuth from "../hooks/useAuth";
 
 const ServiceDetails = () => {
   const { user } = useAuth();
   const { id } = useParams();
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
   const [service, setService] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,7 +51,8 @@ const ServiceDetails = () => {
       serviceTakingDate: startDate,
       specialInstruction: form.specialInstruction.value,
       price: service.price,
-      serviceStatus: "pending",
+      serviceStatus: "Pending",
+      category: service.category,
     };
 
     console.log(bookingData);
@@ -65,6 +67,7 @@ const ServiceDetails = () => {
       form.reset();
       toast.success("Service booked successfully!");
       setIsModalOpen(false);
+      navigate("/my-BookedService");
     } catch (err) {
       toast.error("Failed to book the service. Please try again.");
       console.error(err);
