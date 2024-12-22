@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const ManageService = () => {
   const { user } = useAuth();
-  const [startDate, setStartDate] = useState(new Date());
+
   const [services, setServices] = useState([]);
 
   useEffect(() => {
@@ -18,8 +19,21 @@ const ManageService = () => {
     };
     fetchAllServices();
   }, [user]);
-  console.log(services);
 
+  const handleDelete = async (id) => {
+    try {
+      const { data } = await axios.get(
+        `  ${import.meta.env.VITE_API_URL}/delete-service/${id}`
+      );
+      console.log(data);
+      const updatedServices = services.filter((service) => service._id !== id);
+      setServices(updatedServices);
+      toast.success("Service Deleted Successfully!!!");
+    } catch (err) {
+      console.log(err.message);
+      toast.error(err.message);
+    }
+  };
   return (
     <section className=" pt-12 bg-white container px-4 mx-auto">
       <div className="flex items-center gap-x-3">
@@ -87,9 +101,11 @@ const ManageService = () => {
                         {service.name}
                       </td>
 
-                      <td className="px-4 py-4 text-sm text-black  whitespace-nowrap">
-                        {new Date(service?.deadline).toLocaleDateString()}
-                      </td>
+                      {service?.deadline && (
+                        <td className="px-4 py-4 text-sm text-black  whitespace-nowrap">
+                          {new Date(service?.deadline).toLocaleDateString()}
+                        </td>
+                      )}
 
                       <td className="px-4 py-4 text-sm text-black  whitespace-nowrap">
                         ${service.price}
@@ -108,7 +124,10 @@ const ManageService = () => {
                       </td>
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex items-center gap-x-6">
-                          <button className="text-black transition-colors duration-200   hover:text-red-500 focus:outline-none">
+                          <button
+                            onClick={() => handleDelete(service?._id)}
+                            className="text-black transition-colors duration-200   hover:text-red-500 focus:outline-none"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -126,7 +145,7 @@ const ManageService = () => {
                           </button>
 
                           <Link
-                            to={`/update/1`}
+                            to={`/update/${service._id}`}
                             className="text-black transition-colors duration-200   hover:text-yellow-500 focus:outline-none"
                           >
                             <svg

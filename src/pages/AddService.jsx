@@ -47,7 +47,7 @@ const AddService = () => {
       );
       console.log(data);
       form.reset();
-      toast.success("Data Added Successfully!!!");
+      toast.success("Service Added Successfully!!!");
       navigate("/manageService");
     } catch (err) {
       console.log(err);
