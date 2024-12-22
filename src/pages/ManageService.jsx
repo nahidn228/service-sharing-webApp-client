@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { Helmet } from "react-helmet";
 
 const ManageService = () => {
   const { user } = useAuth();
@@ -37,9 +37,9 @@ const ManageService = () => {
   };
   return (
     <section className=" pt-12 bg-white container px-4 mx-auto">
-       <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
-        <title>Manage Service  - Digital World Technology</title>
+        <title>Manage Service - Digital World Technology</title>
         <link rel="canonical" href="https://fullstackservice1.web.app" />
       </Helmet>
       <div className="flex items-center gap-x-3">
@@ -119,7 +119,16 @@ const ManageService = () => {
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex items-center gap-x-2">
                           <p
-                            className={`px-3 py-1  text-blue-500 bg-blue-100/60 text-xs  rounded-full`}
+                            className={`px-3 py-1  ${
+                              service.category === "Web Development" &&
+                              "text-blue-500 bg-blue-100/60"
+                            } ${
+                              service.category === "Graphics Design" &&
+                              "text-green-500 bg-blue-100/60"
+                            } ${
+                              service.category === "Digital Marketing" &&
+                              "text-red-500 bg-blue-100/60"
+                            }   text-xs  rounded-full`}
                           >
                             {service.category}
                           </p>

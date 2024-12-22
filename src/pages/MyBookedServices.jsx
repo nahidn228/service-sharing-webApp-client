@@ -2,8 +2,8 @@ import axios from "axios";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import useAuth from "../hooks/useAuth";
 import { Helmet } from "react-helmet";
+import useAuth from "../hooks/useAuth";
 
 const MyBookedServices = () => {
   const { user } = useAuth();
@@ -20,12 +20,13 @@ const MyBookedServices = () => {
   }, [user]);
 
   console.log(services);
+
   return (
     <section className="container px-4 mx-auto py-12">
-       <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
-        <title>My Booked Service  - Digital World Technology</title>
-        <link rel="canonical" href="https://fullstackservice1.web.app" />
+        <title>My Booked Service - Digital World Technology</title>
+        <link rel="canonical" href="" />
       </Helmet>
       {/* Header Section */}
       <div className="flex items-center gap-x-3 mb-6">
@@ -58,6 +59,7 @@ const MyBookedServices = () => {
               <th className="px-4 py-3 text-sm font-medium text-left text-black dark:text-white">
                 Status
               </th>
+
               <th className="px-4 py-3 text-sm font-medium text-left text-black dark:text-white">
                 Actions
               </th>
@@ -85,16 +87,38 @@ const MyBookedServices = () => {
                   ${service?.price}
                 </td>
                 <td className="px-4 py-4 text-sm">
-                  <span className="px-3 py-1 text-xs font-medium text-blue-600 bg-blue-100 dark:bg-blue-900 dark:text-blue-300 rounded-full">
-                   {service?.category}
+                  <span
+                    className={`px-3 py-1  ${
+                      service.category === "Web Development" &&
+                      "text-blue-500 bg-blue-100/60"
+                    } ${
+                      service.category === "Graphics Design" &&
+                      "text-green-500 bg-blue-100/60"
+                    } ${
+                      service.category === "Digital Marketing" &&
+                      "text-red-500 bg-blue-100/60"
+                    }   text-xs  rounded-full`}
+                  >
+                    {service?.category}
                   </span>
                 </td>
                 <td className="px-4 py-4 text-sm">
-                  <span className="inline-flex items-center px-3 py-1 gap-x-2 text-yellow-500 bg-yellow-100 dark:bg-yellow-900/50 dark:text-yellow-300 rounded-full">
-                    <span className="h-1.5 w-1.5 rounded-full bg-yellow-500"></span>
-                    {service?.serviceStatus}
+                  <span
+                    className={`inline-flex items-center px-3 py-1 gap-x-2   ${
+                      service.status === "Working" &&
+                      "text-blue-500 bg-blue-100/60"
+                    } ${
+                      service.status === "Completed" &&
+                      "text-green-500 bg-blue-100/60"
+                    } ${
+                      service.status === "Pending" &&
+                      "text-red-500 bg-blue-100/60"
+                    }   text-xs  rounded-full`}
+                  >
+                    {service?.status}
                   </span>
                 </td>
+
                 <td className="px-4 py-4 text-sm">
                   <button
                     title="Mark Complete"
