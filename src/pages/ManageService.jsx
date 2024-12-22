@@ -14,7 +14,8 @@ const ManageService = () => {
   useEffect(() => {
     const fetchAllServices = async () => {
       const { data } = await axios.get(
-        `  ${import.meta.env.VITE_API_URL}/services/${user?.email}`
+        `  ${import.meta.env.VITE_API_URL}/services/${user?.email}`,
+        { withCredentials: true }
       );
       setServices(data);
     };
@@ -24,7 +25,8 @@ const ManageService = () => {
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.get(
-        `  ${import.meta.env.VITE_API_URL}/delete-service/${id}`
+        `  ${import.meta.env.VITE_API_URL}/delete-service/${id}`,
+        { withCredentials: true }
       );
       console.log(data);
       const updatedServices = services.filter((service) => service._id !== id);

@@ -44,7 +44,8 @@ const AddService = () => {
       // make a post request
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/add-service`,
-        formData
+        formData,
+        { withCredentials: true }
       );
       console.log(data);
       form.reset();

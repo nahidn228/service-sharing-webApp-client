@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-white dark:bg-gray-900 shadow-sm container md:px-4 mx-auto ">
+    <div className="navbar bg-white bg-transparent backdrop-blur-md shadow-md sticky top-0 z-50 ">
       {/* Logo */}
       <div className="flex-1">
         <NavLink
@@ -86,8 +86,8 @@ const Navbar = () => {
               to="/"
               className={({ isActive }) =>
                 `hover:text-blue-500 ${
-                  isActive ? "bg-blue-300  font-medium" : ""
-                } hidden md:flex btn btn-sm md:btn-md`
+                  isActive ? "bg-neutral  font-medium" : ""
+                } hidden md:flex btn btn-outline btn-info btn-sm md:btn-md`
               }
             >
               Home
@@ -97,7 +97,7 @@ const Navbar = () => {
             <NavLink
               to="/services"
               className={({ isActive }) =>
-                `hover:text-blue-500 ${isActive ? "bg-blue-300  font-medium" : ""} btn btn-sm md:btn-md`
+                `hover:text-blue-500 ${isActive ? "bg-neutral  font-medium" : ""} btn btn-outline btn-info btn-sm md:btn-md`
               }
             >
               Services
@@ -120,7 +120,7 @@ const Navbar = () => {
         {user && (
           <div className="dropdown dropdown-end z-50">
             <div tabIndex={0} role="button">
-              <div className=" text-black btn btn-sm md:btn-md">Dashboard</div>
+              <div className=" btn btn-outline btn-info btn-sm md:btn-md">Dashboard</div>
             </div>
             <ul
               tabIndex={0}
@@ -138,7 +138,7 @@ const Navbar = () => {
               <li>
                 <NavLink to="/service-requests">Service To-Do</NavLink>
               </li>
-              <li className="mt-2">
+              <li className="mt-2 ">
                 <button
                   onClick={logOut}
                   className=" bg-red-500 hover:bg-red-600 text-white rounded-md   btn btn-sm"
@@ -172,7 +172,7 @@ const Navbar = () => {
           user &&  
           <div><button
           onClick={logOut}
-          className="w-full bg-red-500 hover:bg-red-600 text-white rounded-md px-4 py-2 font-medium"
+          className="w-full bg-red-500 hover:bg-red-600 text-white rounded-md px-4 py-2 font-medium hidden lg:flex"
         >
           Logout
         </button></div>

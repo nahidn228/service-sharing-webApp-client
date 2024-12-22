@@ -20,7 +20,8 @@ const ServiceDetails = () => {
   useEffect(() => {
     const fetchOneService = async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/service/${id}`
+        `${import.meta.env.VITE_API_URL}/service/${id}`,
+        { withCredentials: true }
       );
       setService(data);
     };
@@ -58,13 +59,11 @@ const ServiceDetails = () => {
 
     if (bookingData.providerEmail === user.email) {
       return toast.error(
-        "Failed to book the service. You do not book your own Service..!!!"
+        "Failed to book the service. You do not have permission to book your own Service..!!!"
       );
     }
-    if(!bookingData.specialInstruction){
-      return toast.error(
-        "Please give some special instruction..!!!"
-      );
+    if (!bookingData.specialInstruction) {
+      return toast.error("Please give some special instruction..!!!");
     }
 
     console.log(bookingData);
@@ -73,7 +72,8 @@ const ServiceDetails = () => {
       // make a post request
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/booked-service`,
-        bookingData
+        bookingData,
+        { withCredentials: true }
       );
       console.log(data);
       form.reset();

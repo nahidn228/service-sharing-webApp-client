@@ -24,7 +24,8 @@ const ServiceRequests = () => {
       // make a post request
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/update-status/${id}`,
-        { status: filter }
+        { status: filter },
+        { withCredentials: true }
       );
       console.log(data);
       console.log(filter);
@@ -39,13 +40,14 @@ const ServiceRequests = () => {
   };
   const fetchAllServices = async () => {
     const { data } = await axios.get(
-      `  ${import.meta.env.VITE_API_URL}/booked-services/${user?.email}`
+      `  ${import.meta.env.VITE_API_URL}/booked-services/${user?.email}`,
+      { withCredentials: true }
     );
     setServices(data);
   };
   fetchAllServices();
 
-  console.log(services);
+  // console.log(services);
   return (
     <section className="container px-4 mx-auto py-12">
       <Helmet>

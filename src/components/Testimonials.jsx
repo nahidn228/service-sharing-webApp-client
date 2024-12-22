@@ -63,7 +63,7 @@ const Testimonials = () => {
           Hear from some of our happy clients.
         </p>
         <Swiper
-          slidesPerView={3}
+          slidesPerView={1}
           spaceBetween={20}
           speed={1500}
           autoplay={{
@@ -71,8 +71,16 @@ const Testimonials = () => {
             disableOnInteraction: false,
           }}
           loop={true}
+          breakpoints={{
+            640: {
+              slidesPerView: 2, // Medium devices
+            },
+            1024: {
+              slidesPerView: 3, // Large devices
+            },
+          }}
           modules={[Autoplay]}
-          className="mySwiper"
+          className="mySwiper grid grid-cols-1 md:grid-cols-3"
         >
           {testimonials.map((testimonial) => (
             <SwiperSlide key={testimonial.id}>
@@ -82,9 +90,7 @@ const Testimonials = () => {
                   alt={testimonial.name}
                   className="w-16 h-16 rounded-full mb-4 object-cover"
                 />
-                <p className="text-gray-600 italic mb-4">
-                  {testimonial.text}
-                </p>
+                <p className="text-gray-600 italic mb-4">{testimonial.text}</p>
                 <h3 className="font-bold text-gray-800">{testimonial.name}</h3>
                 <span className="text-sm text-gray-500">
                   {testimonial.role}

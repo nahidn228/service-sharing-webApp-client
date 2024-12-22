@@ -16,7 +16,8 @@ const AddService = () => {
   useEffect(() => {
     const fetchOneService = async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/service/${id}`
+        `${import.meta.env.VITE_API_URL}/service/${id}`,
+        { withCredentials: true }
       );
       setService(data);
     };
@@ -49,7 +50,8 @@ const AddService = () => {
       // make a put request
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/update-service/${id}`,
-        formData
+        formData,
+        { withCredentials: true }
       );
       console.log(data);
       form.reset();
