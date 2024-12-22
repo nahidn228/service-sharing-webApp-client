@@ -64,7 +64,14 @@ const AuthProvider = ({ children }) => {
           { withCredentials: true }
         );
         console.log("Login Token --->", data);
-      } 
+      } else {
+        setUser(currentUser);
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/logout`,
+          { withCredentials: true }
+        );
+        console.log("Logout Token --->", data);
+      }
       setLoading(false);
     });
     return () => {

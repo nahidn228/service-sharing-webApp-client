@@ -56,6 +56,17 @@ const ServiceDetails = () => {
       category: service.category,
     };
 
+    if (bookingData.providerEmail === user.email) {
+      return toast.error(
+        "Failed to book the service. You do not book your own Service..!!!"
+      );
+    }
+    if(!bookingData.specialInstruction){
+      return toast.error(
+        "Please give some special instruction..!!!"
+      );
+    }
+
     console.log(bookingData);
 
     try {

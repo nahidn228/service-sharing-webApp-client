@@ -68,7 +68,7 @@ const AddService = () => {
           Add a Service
         </h2>
         <p className="text-sm text-gray-500 text-center mt-2 mb-6">
-          Fill out the details below to post a new service job.
+          Fill out the details below to post a new service.
         </p>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -76,7 +76,7 @@ const AddService = () => {
             <div>
               <label
                 className="block text-sm font-medium text-gray-600"
-                htmlFor="job_title"
+                htmlFor="service"
               >
                 Service Name
               </label>
@@ -84,6 +84,7 @@ const AddService = () => {
                 id="service_title"
                 name="title"
                 type="text"
+                required
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
                 placeholder="Enter Service title"
               />
@@ -100,6 +101,7 @@ const AddService = () => {
               <input
                 id="emailAddress"
                 name="serviceImg"
+                required
                 type="url"
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
                 placeholder="Enter your Image URL of the Service "
@@ -130,6 +132,7 @@ const AddService = () => {
               <select
                 name="category"
                 id="category"
+                required
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
               >
                 <option value="Web Development">Web Development</option>
@@ -150,6 +153,7 @@ const AddService = () => {
                 id="min_price"
                 name="min_price"
                 type="number"
+                required
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
                 placeholder="Enter minimum price"
               />
@@ -166,6 +170,7 @@ const AddService = () => {
               <select
                 name="area"
                 id="area"
+                required
                 className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
               >
                 <option value="Dhaka">Dhaka</option>
@@ -190,9 +195,10 @@ const AddService = () => {
             <textarea
               id="description"
               name="description"
+              required
               rows="4"
               className="w-full mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
-              placeholder="Describe the job details..."
+              placeholder="Describe the Service details..."
             ></textarea>
           </div>
 
