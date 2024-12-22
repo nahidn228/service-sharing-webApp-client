@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
@@ -76,6 +77,12 @@ const ServiceDetails = () => {
 
   return (
     <div className="flex flex-col gap-10 items-center min-h-[calc(100vh-306px)] md:max-w-screen-2xl mx-auto px-4 py-10 bg-gray-50">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{service.name} - Digital World Technology</title>
+        <link rel="canonical" href="https://fullstackservice1.web.app" />
+      </Helmet>
+
       {/* Service Details */}
       <div className="flex-1 px-6 py-8 bg-white rounded-lg shadow-lg md:min-h-[350px] hover:shadow-2xl transition-shadow duration-300">
         <div className="flex items-center justify-between">

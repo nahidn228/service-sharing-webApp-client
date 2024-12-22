@@ -10,7 +10,7 @@ import ManageService from "../pages/ManageService";
 import MyBookedServices from "../pages/MyBookedServices";
 import ServiceDetails from "../pages/ServiceDetails";
 import ServiceRequests from "../pages/ServiceRequests";
-import UpdateJob from "../pages/UpdateJob";
+import UpdateService from "../pages/UpdateService";
 import PrivateRoute from "./PrivateRoute";
 const router = createBrowserRouter([
   {
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: (
           <PrivateRoute>
-            <UpdateJob></UpdateJob>
+            <UpdateService></UpdateService>
           </PrivateRoute>
         ),
       },

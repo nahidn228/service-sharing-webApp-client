@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const ServiceRequests = () => {
   const { user } = useAuth();
@@ -21,6 +22,11 @@ const ServiceRequests = () => {
   console.log(services);
   return (
     <section className="container px-4 mx-auto py-12">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Service To-Do  - Digital World Technology</title>
+        <link rel="canonical" href="https://fullstackservice1.web.app" />
+      </Helmet>
       {/* Header Section */}
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold text-black">Service To-Do</h2>

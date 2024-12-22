@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const ManageService = () => {
   const { user } = useAuth();
@@ -36,6 +37,11 @@ const ManageService = () => {
   };
   return (
     <section className=" pt-12 bg-white container px-4 mx-auto">
+       <Helmet>
+        <meta charSet="utf-8" />
+        <title>Manage Service  - Digital World Technology</title>
+        <link rel="canonical" href="https://fullstackservice1.web.app" />
+      </Helmet>
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-black ">Manage Services</h2>
 
@@ -44,11 +50,11 @@ const ManageService = () => {
         </span>
       </div>
 
-      <div className="flex flex-col mt-6">
+      <div className="flex flex-col mt-6 pb-6">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden border border-gray-200  md:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200">
+              <table className="min-w-full  divide-y divide-gray-200">
                 <thead className="bg-white">
                   <tr>
                     <th

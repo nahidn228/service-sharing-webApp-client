@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
@@ -57,6 +58,11 @@ const AddService = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 via-white to-blue-50">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Add your Service Here - Digital World Technology</title>
+        <link rel="canonical" href="https://fullstackservice1.web.app" />
+      </Helmet>
       <section className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-gray-700 text-center">
           Add a Service

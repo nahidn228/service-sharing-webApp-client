@@ -1,6 +1,6 @@
 import  axios  from "axios";
 import { useEffect, useState } from "react";
-
+import { Helmet } from "react-helmet";
 import ServiceCard from "../components/ServiceCard";
 
 const AllServices = () => {
@@ -22,6 +22,11 @@ const AllServices = () => {
 
   return (
     <div className="container bg-white px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between">
+       <Helmet>
+        <meta charSet="utf-8" />
+        <title>Our Services - Digital World Technology</title>
+        <link rel="canonical" href="https://fullstackservice1.web.app" />
+      </Helmet>
       <div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-5">
           <div>

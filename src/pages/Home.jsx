@@ -4,10 +4,16 @@ import PopularServices from "../components/PopularServices";
 import TabCategories from "../components/TabCategories";
 import Testimonials from "../components/Testimonials";
 import WhyChooseUs from "../components/WhyChooseUs";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   return (
     <div>
+        <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home - Digital World Technology</title>
+        <link rel="canonical" href="https://fullstackservice1.web.app" />
+      </Helmet>
       {/* Animated Carousel */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}

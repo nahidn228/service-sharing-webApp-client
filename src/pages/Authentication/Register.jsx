@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logooooo.png";
 import registerLottieData from "../../assets/register.json";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Helmet } from "react-helmet";
+import { Typewriter } from "react-simple-typewriter";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -43,6 +45,11 @@ const Registration = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r  py-12 px-4">
+        <Helmet>
+        <meta charSet="utf-8" />
+        <title>Register - Digital World Technology</title>
+        <link rel="canonical" href="https://fullstackservice1.web.app" />
+      </Helmet>
       <div className="flex items-center w-full max-w-xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl lg:max-w-5xl">
         <div className="w-full px-8 py-8 md:px-10 lg:w-1/2">
           <div className="flex justify-center mx-auto mb-6">
@@ -50,7 +57,16 @@ const Registration = () => {
           </div>
 
           <p className="mt-3 text-2xl text-center text-black font-semibold">
-            Create Your Free Account
+          <Typewriter
+                  words={[`Create Your Free Account`]}
+                  loop={Infinity}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={100}
+                  deleteSpeed={100}
+                  delaySpeed={1000}
+                />
+            
           </p>
 
           {/* Google Sign-in Button */}

@@ -1,12 +1,18 @@
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import { Helmet } from "react-helmet";
 
-const UpdateJob = () => {
+const UpdateService = () => {
   const [startDate, setStartDate] = useState(new Date())
 
   return (
     <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
+        <Helmet>
+        <meta charSet="utf-8" />
+        <title>Update  - Digital World Technology</title>
+        <link rel="canonical" href="https://fullstackservice1.web.app" />
+      </Helmet>
       <section className=' p-2 md:p-6 mx-auto bg-white rounded-md shadow-md '>
         <h2 className='text-lg font-semibold text-gray-700 capitalize '>
           Update a Job
@@ -108,4 +114,4 @@ const UpdateJob = () => {
   )
 }
 
-export default UpdateJob
+export default UpdateService

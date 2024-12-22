@@ -1,8 +1,10 @@
 import Lottie from "lottie-react";
 import { useContext, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 import logo from "../../assets/images/logooooo.png";
 import loginLottieData from "../../assets/login.json";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -52,6 +54,11 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] py-12 bg-gradient-to-br from-gray-100 to-gray-200 container px-4 mx-auto">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login - Digital World Technology</title>
+        <link rel="canonical" href="https://fullstackservice1.web.app" />
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-lg shadow-lg bg-white">
         <Lottie animationData={loginLottieData} className="w-full" />
 
@@ -60,15 +67,24 @@ const Login = () => {
             <img className="w-14 h-auto sm:h-10" src={logo} alt="Logo" />
           </div>
 
-          <p className="mt-3 text-xl font-semibold text-center text-black">
-            Welcome back!
+          <p className="mt-3 text-xl font-bold text-center text-blue-600 ">
+           
+            <Typewriter
+              words={[`Digital World Technology`]}
+              loop={Infinity}
+              cursor
+              cursorStyle="|"
+              typeSpeed={100}
+              deleteSpeed={100}
+              delaySpeed={1000}
+            />
           </p>
 
           <div
             onClick={handleGoogleSignIn}
             className="flex cursor-pointer items-center justify-center mt-6 text-gray-700 transition-colors duration-300 transform border rounded-lg hover:bg-gray-50 hover:shadow-sm"
           >
-           <div className="px-4 py-2">
+            <div className="px-4 py-2">
               <svg className="w-6 h-6" viewBox="0 0 40 40">
                 <path
                   d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
