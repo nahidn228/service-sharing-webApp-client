@@ -16,7 +16,7 @@ const ServiceDetails = () => {
   const [service, setService] = useState({});
   const [allService, setAllService] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
     const fetchOneService = async () => {
@@ -66,16 +66,18 @@ const ServiceDetails = () => {
     };
     console.log(allService);
 
-    const allServiceId = allService?.map(
-      (ser) => ser.serviceId === bookingData.serviceId
-    );
-    const allServiceEmail = allService?.map(
-      (ser) => ser.userEmail === bookingData.userEmail
+    // Check for duplicate bookings
+    const isDuplicate = allService.some(
+      (item) =>
+        item.serviceId === bookingData.serviceId &&
+        item.userEmail === bookingData.userEmail
     );
 
-    if (allServiceId && allServiceEmail) {
-      return toast.error("You have already booked this service...!!!");
+    if (isDuplicate) {
+      return toast.error("You have already booked this service!");
     }
+
+    
 
     if (bookingData.providerEmail === user.email) {
       return toast.error(
