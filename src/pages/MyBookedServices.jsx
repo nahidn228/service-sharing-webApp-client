@@ -11,11 +11,15 @@ const MyBookedServices = () => {
 
   useEffect(() => {
     const fetchAllServices = async () => {
-      const { data } = await axios.get(
-        `  ${import.meta.env.VITE_API_URL}/myBooked-services/${user?.email}`,
-        { withCredentials: true }
-      );
-      setServices(data);
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/myBooked-services/${user?.email}`,
+          { withCredentials: true }
+        );
+        setServices(data);
+      } catch (error) {
+        console.error("Error fetching services:", error);
+      }
     };
     fetchAllServices();
   }, [user]);

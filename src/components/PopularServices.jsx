@@ -6,6 +6,7 @@ const PopularServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
+ 
     const fetchAllServices = async () => {
       const { data } = await axios.get(
         `  ${import.meta.env.VITE_API_URL}/popular-services`

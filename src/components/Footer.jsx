@@ -1,4 +1,4 @@
-import { FaFacebook, FaGithub, FaReddit } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import logo from "../assets/images/logooooo.png";
 
@@ -51,13 +51,13 @@ const Footer = () => {
           {/* Social Links with Icons */}
           <div className="flex -mx-2">
             <a
-              href="https://www.reddit.com"
+              href="https://www.linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
               className="mx-2 text-gray-600 transition-colors duration-300 hover:text-red-500"
               aria-label="Reddit"
             >
-              <FaReddit className="w-5 h-5" />
+              <FaLinkedin className="w-5 h-5" />
             </a>
             <a
               href="https://www.facebook.com"
