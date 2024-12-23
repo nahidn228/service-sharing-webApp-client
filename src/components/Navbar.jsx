@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/images/logooooo.png";
 import { AuthContext } from "../providers/AuthProvider";
+import { Typewriter } from 'react-simple-typewriter';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -32,7 +33,15 @@ const Navbar = () => {
           className="flex items-center gap-2 text-black dark:text-gray-200"
         >
           <img className="w-14 h-auto" src={logo} alt="Logo" />
-          <span className="text-xl font-bold hidden md:flex">Digital World</span>
+          <span className="text-xl font-bold hidden md:flex"> <Typewriter
+                words={["Digital World Technology"]}
+                loop={true}
+                cursor
+                cursorStyle="|"
+                typeSpeed={100}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              /></span>
         </NavLink>
       </div>
 

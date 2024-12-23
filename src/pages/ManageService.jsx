@@ -22,21 +22,64 @@ const ManageService = () => {
     fetchAllServices();
   }, [user]);
 
-  const handleDelete = async (id) => {
-    try {
-      const { data } = await axios.get(
-        `  ${import.meta.env.VITE_API_URL}/delete-service/${id}`,
-        { withCredentials: true }
-      );
-      console.log(data);
-      const updatedServices = services.filter((service) => service._id !== id);
-      setServices(updatedServices);
-      toast.success("Service Deleted Successfully!!!");
-    } catch (err) {
-      console.log(err.message);
-      toast.error(err.message);
-    }
+  const handleDelete = (id) => {
+    const confirmDelete = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/delete-service/${id}`,
+          { withCredentials: true }
+        );
+        console.log(data);
+
+        const updatedServices = services.filter(
+          (service) => service._id !== id
+        );
+        setServices(updatedServices);
+        toast.dismiss(); // Close the toast after successful deletion
+        toast.success("Service Deleted Successfully!");
+      } catch (err) {
+        console.log(err.message);
+        toast.dismiss(); // Close the toast if there's an error
+        toast.error(err.message);
+      }
+    };
+
+    const cancelDelete = () => {
+      toast.dismiss(); // Close the toast
+    };
+
+    // Show a custom toast with buttons
+    toast.custom((t) => (
+      <div
+        className={`flex flex-col gap-3 items-start justify-between p-4 rounded-lg shadow-lg ${
+          t.visible ? "animate-enter" : "animate-leave"
+        } bg-gray-800 border border-gray-700 text-white`}
+      >
+        <div>
+          <p className="text-base font-semibold">Delete Service</p>
+          <p className="text-sm text-gray-400">
+            Are you sure you want to delete this service? This action cannot be
+            undone.
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={confirmDelete}
+            className="px-4 py-1 text-sm font-medium bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-sm"
+          >
+            Delete
+          </button>
+          <button
+            onClick={()=>cancelDelete(t)}
+            className="px-4 py-1 text-sm font-medium bg-gray-600 hover:bg-gray-700 text-white rounded-lg shadow-sm"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    ));
   };
+
   return (
     <section className=" pt-12 bg-white container px-4 mx-auto">
       <Helmet>

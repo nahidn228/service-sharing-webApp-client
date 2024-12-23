@@ -20,23 +20,60 @@ const ServiceRequests = () => {
       return;
     }
 
-    try {
-      // make a post request
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/update-status/${id}`,
-        { status: filter },
-        { withCredentials: true }
-      );
-      console.log(data);
-      console.log(filter);
+    const handleUpdate = async () => {
+      try {
+        const { data } = await axios.put(
+          `${import.meta.env.VITE_API_URL}/update-status/${id}`,
+          { status: filter },
+          { withCredentials: true }
+        );
+        console.log(data);
+        console.log(filter);
 
-      fetchAllServices();
+        fetchAllServices();
+        toast.dismiss(); // Close the toast after successful operation
+        toast.success(`Successfully Status Updated as '${filter}' !!!`);
+      } catch (err) {
+        console.log(err);
+        toast.dismiss(); // Close the toast if there's an error
+        toast.error(err.message);
+      }
+    };
 
-      toast.success(`Successfully Status Updated as '${filter}' !!!`);
-    } catch (err) {
-      console.log(err);
-      toast.error(err.message);
-    }
+    const handleCancel = () => {
+      toast.dismiss(); // Close the toast
+    };
+
+    // Show a custom toast with Update and Cancel buttons
+    toast.custom((t) => (
+      <div
+        className={`flex flex-col gap-3 items-start justify-between p-4 rounded-lg shadow-lg ${
+          t.visible ? "animate-enter" : "animate-leave"
+        } bg-gray-800 border border-gray-700 text-white`}
+      >
+        <div>
+          <p className="text-base font-semibold">Update Status</p>
+          <p className="text-sm text-gray-400">
+            Are you sure you want to change the status to{" "}
+            <span className="text-green-400">{filter}</span>?
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleUpdate}
+            className="px-4 py-1 text-sm font-medium bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-sm"
+          >
+            Update
+          </button>
+          <button
+            onClick={handleCancel}
+            className="px-4 py-1 text-sm font-medium bg-gray-600 hover:bg-gray-700 text-white rounded-lg shadow-sm"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    ));
   };
   const fetchAllServices = async () => {
     const { data } = await axios.get(
