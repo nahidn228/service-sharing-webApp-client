@@ -14,6 +14,7 @@ const ServiceDetails = () => {
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
   const [service, setService] = useState({});
+  const [allService, setAllService] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   console.log(user);
 
@@ -26,7 +27,14 @@ const ServiceDetails = () => {
       setService(data);
     };
     fetchOneService();
+
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/booked-service`, {
+        withCredentials: true,
+      })
+      .then((res) => setAllService(res.data));
   }, [id]);
+  // console.log(allService);
 
   const handleBookNow = (e) => {
     e.preventDefault();
@@ -53,9 +61,21 @@ const ServiceDetails = () => {
       serviceTakingDate: startDate,
       specialInstruction: form.specialInstruction.value,
       price: service.price,
-      serviceStatus: "Pending",
+      status: "Pending",
       category: service.category,
     };
+    console.log(allService);
+
+    const allServiceId = allService?.map(
+      (ser) => ser.serviceId === bookingData.serviceId
+    );
+    const allServiceEmail = allService?.map(
+      (ser) => ser.userEmail === bookingData.userEmail
+    );
+
+    if (allServiceId && allServiceEmail) {
+      return toast.error("You have already booked this service...!!!");
+    }
 
     if (bookingData.providerEmail === user.email) {
       return toast.error(
