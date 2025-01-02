@@ -310,7 +310,7 @@ const ServiceDetails = () => {
                   </label>
                   <DatePicker
                     className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
-                    selected={startDate}
+                    defaultValue={startDate}
                     onChange={(date) => setStartDate(date)}
                   />
                 </div>
