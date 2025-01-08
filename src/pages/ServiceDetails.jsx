@@ -109,7 +109,7 @@ const ServiceDetails = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10 items-center min-h-[calc(100vh-306px)] md:max-w-screen-2xl mx-auto px-4 py-10 bg-gray-50">
+    <div className="flex flex-col gap-10 items-center min-h-[calc(100vh-306px)] md:max-w-screen-2xl mx-auto px-4 py-10 ">
       <Helmet>
         <meta charSet="utf-8" />
         <title>{`${service?.name} - Digital World Technology`}</title>

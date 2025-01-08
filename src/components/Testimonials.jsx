@@ -54,12 +54,12 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="bg-blue-50 py-10 px-6">
+    <div className=" py-10 px-6">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">
+        <h2 className="text-3xl font-bold text-black mb-4">
           What Our Clients Say
         </h2>
-        <p className="text-gray-600 mb-8">
+        <p className="text-black mb-8">
           Hear from some of our happy clients.
         </p>
         <Swiper
@@ -90,9 +90,9 @@ const Testimonials = () => {
                   alt={testimonial.name}
                   className="w-16 h-16 rounded-full mb-4 object-cover"
                 />
-                <p className="text-gray-600 italic mb-4">{testimonial.text}</p>
-                <h3 className="font-bold text-gray-800">{testimonial.name}</h3>
-                <span className="text-sm text-gray-500">
+                <p className="text-black italic mb-4">{testimonial.text}</p>
+                <h3 className="font-bold text-black">{testimonial.name}</h3>
+                <span className="text-sm text-black">
                   {testimonial.role}
                 </span>
               </div>

@@ -42,7 +42,7 @@ const AllServices = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Our Services - Digital World Technology</title>
-        <link rel="canonical" href="https://fullstackservice1.web.app" />
+        
       </Helmet>
       {isLoading ? (
         <LoadingSpinner></LoadingSpinner>
@@ -68,7 +68,7 @@ const AllServices = () => {
               <form className="w-full max-w-md">
                 <div className="flex p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
                   <input
-                    className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent w-full max-w-md"
+                    className="px-6 py-2 text-black placeholder-gray-500 bg-white outline-none focus:placeholder-transparent w-full max-w-md"
                     type="text"
                     onChange={(e) => setSearch(e.target.value)}
                     name="search"

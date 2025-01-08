@@ -4,12 +4,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
 import useAuth from "../hooks/useAuth";
 
 const ManageService = () => {
   const { user } = useAuth();
 
   const [services, setServices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchAllServices = async () => {
@@ -18,6 +20,7 @@ const ManageService = () => {
         { withCredentials: true }
       );
       setServices(data);
+      setIsLoading(false);
     };
     fetchAllServices();
   }, [user]);
@@ -70,7 +73,7 @@ const ManageService = () => {
             Delete
           </button>
           <button
-            onClick={()=>cancelDelete(t)}
+            onClick={() => cancelDelete(t)}
             className="px-4 py-1 text-sm font-medium bg-gray-600 hover:bg-gray-700 text-white rounded-lg shadow-sm"
           >
             Cancel
@@ -79,6 +82,10 @@ const ManageService = () => {
       </div>
     ));
   };
+
+  {
+    isLoading ? <LoadingSpinner></LoadingSpinner> : "";
+  }
 
   return (
     <section className=" pt-12 bg-white container px-4 mx-auto">

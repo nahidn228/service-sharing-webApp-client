@@ -19,8 +19,8 @@ const PopularServices = () => {
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-800">Popular Services</h2>
-        <p className="text-gray-600 mt-2">
+        <h2 className="text-3xl font-bold text-black">Popular Services</h2>
+        <p className="text-black mt-2">
           Explore our most popular services tailored for your needs.
         </p>
       </div>
@@ -39,10 +39,10 @@ const PopularServices = () => {
             {/* Service Details */}
             <div className="p-4 flex flex-col justify-between">
               <div>
-                <h3 className="text-xl font-semibold text-gray-800">
+                <h3 className="text-xl font-semibold text-black">
                   {service?.name}
                 </h3>
-                <p className="text-gray-600 mt-2">
+                <p className="text-black mt-2">
                   {service?.description.length > 100
                     ? service?.description.substring(0, 100) + "..."
                     : service?.description}
@@ -57,12 +57,12 @@ const PopularServices = () => {
                     alt={service?.buyer?.name}
                     className="w-10 h-10 rounded-full object-cover mr-3"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     {service?.buyer?.name}
                   </span>
                 </div>
                 {/* Price */}
-                <span className="flex items-center  text-lg font-bold text-gray-800">
+                <span className="flex items-center  text-lg font-bold text-black">
                   <FaDollarSign className="text-green-500" /> {service.price}
                 </span>
               </div>

@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 import logo from "../assets/images/logooooo.png";
 import { AuthContext } from "../providers/AuthProvider";
-import { Typewriter } from 'react-simple-typewriter';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-white bg-transparent backdrop-blur-md shadow-md sticky top-0 z-50 ">
+    <div className="navbar bg-white bg-transparent backdrop-blur-md shadow-md sticky top-0 z-50 max-w-screen-xl mx-auto">
       {/* Logo */}
       <div className="flex-1">
         <NavLink
@@ -33,15 +33,17 @@ const Navbar = () => {
           className="flex items-center gap-2 text-black dark:text-gray-200"
         >
           <img className="w-14 h-auto" src={logo} alt="Logo" />
-          <span className="text-xl font-bold hidden md:flex"> <Typewriter
-                words={["Digital World Technology"]}
-                loop={true}
-                cursor
-                cursorStyle="|"
-                typeSpeed={100}
-                deleteSpeed={50}
-                delaySpeed={1000}
-              /></span>
+          <span className="text-xl font-bold hidden md:flex">
+            <Typewriter
+              words={["Digital World Technology"]}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={100}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </span>
         </NavLink>
       </div>
 
@@ -94,8 +96,8 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `hover:text-blue-500 ${
-                  isActive ? "bg-neutral  font-medium" : ""
+                `hover:text-blue-600 transition-colors duration-300 ${
+                  isActive ? "bg-neutral font-semibold text-blue-500" : ""
                 } hidden md:flex btn btn-outline btn-info btn-sm md:btn-md`
               }
             >
@@ -106,7 +108,9 @@ const Navbar = () => {
             <NavLink
               to="/services"
               className={({ isActive }) =>
-                `hover:text-blue-500 ${isActive ? "bg-neutral  font-medium" : ""} btn btn-outline btn-info btn-sm md:btn-md`
+                `hover:text-blue-600 transition-colors duration-300 ${
+                  isActive ? "bg-neutral font-semibold text-blue-500" : ""
+                } btn btn-outline btn-info btn-sm md:btn-md`
               }
             >
               Services
@@ -117,7 +121,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/login"
-                className="btn btn-sm md:btn-md bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2 font-medium shadow-md"
+                className="btn btn-sm md:btn-md bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 py-2 font-medium shadow-md"
               >
                 Login
               </NavLink>
@@ -129,7 +133,9 @@ const Navbar = () => {
         {user && (
           <div className="dropdown dropdown-end z-50">
             <div tabIndex={0} role="button">
-              <div className=" btn btn-outline btn-info btn-sm md:btn-md">Dashboard</div>
+              <div className="btn btn-outline btn-info btn-sm md:btn-md text-blue-600 hover:text-blue-700">
+                Dashboard
+              </div>
             </div>
             <ul
               tabIndex={0}
@@ -150,7 +156,7 @@ const Navbar = () => {
               <li className="mt-2 ">
                 <button
                   onClick={logOut}
-                  className=" bg-red-500 hover:bg-red-600 text-white rounded-md   btn btn-sm"
+                  className="bg-red-500 hover:bg-red-600 text-white rounded-md px-4 py-2 font-medium transition-colors duration-300"
                 >
                   Logout
                 </button>
@@ -158,6 +164,8 @@ const Navbar = () => {
             </ul>
           </div>
         )}
+
+        {/* User Profile */}
         {user && (
           <div
             tabIndex={0}
@@ -177,16 +185,16 @@ const Navbar = () => {
           </div>
         )}
 
-        {
-          user &&  
-          <div><button
-          onClick={logOut}
-          className="w-full bg-red-500 hover:bg-red-600 text-white rounded-md px-4 py-2 font-medium hidden lg:flex"
-        >
-          Logout
-        </button></div>
-       
-        }
+        {user && (
+          <div>
+            <button
+              onClick={logOut}
+              className="w-full bg-red-500 hover:bg-red-600 text-white rounded-md px-4 py-2 font-medium hidden lg:flex transition-colors duration-300"
+            >
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

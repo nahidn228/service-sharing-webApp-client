@@ -36,9 +36,9 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="bg-gray-100 py-10">
+    <section className=" py-10">
       <div className="container mx-auto px-6">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-2xl font-bold text-center text-black mb-8">
           Frequently Asked Questions
         </h2>
         <div className="space-y-4">
@@ -61,7 +61,7 @@ const FAQ = () => {
                 </span>
               </button>
               {activeIndex === index && (
-                <p className="mt-4 text-gray-600">{faq.answer}</p>
+                <p className="mt-4 text-black">{faq.answer}</p>
               )}
             </div>
           ))}

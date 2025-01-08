@@ -8,7 +8,7 @@ const ServiceCard = ({ service }) => {
   return (
     <Link
       to={`/service/${service?._id}`}
-      className="w-full max-w-2xl mx-auto p-5 bg-white dark:bg-gray-800 rounded-md shadow-md hover:scale-[1.05] hover:shadow-lg transition-transform"
+      className="w-full max-w-2xl mx-auto p-5  rounded-md shadow-md hover:scale-[1.05] hover:shadow-lg transition-transform"
     >
       {/* Service Image */}
       <img
@@ -20,23 +20,23 @@ const ServiceCard = ({ service }) => {
       {/* Header */}
       <div className="flex items-center justify-between">
         {service?.deadline && (
-          <span className="flex items-center gap-1 text-xs font-light text-gray-600 dark:text-gray-300">
+          <span className="flex items-center gap-1 text-xs font-light text-black ">
             <FaClock className="w-4 h-4 text-blue-500" />
             Deadline: {format(new Date(service.deadline), "P")}
           </span>
         )}
 
-        <span className="px-3 py-1 text-[8px] text-blue-800 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-300 uppercase">
+        <span className="px-3 py-1 text-[8px] text-blue-800 bg-blue-200 rounded-full   uppercase">
           {service?.category}
         </span>
       </div>
 
       {/* Main Content */}
       <div className="mt-4">
-        <h1 className="text-lg font-semibold text-black dark:text-gray-200">
+        <h1 className="text-lg font-semibold text-black ">
           {service?.name}
         </h1>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+        <p className="mt-2 text-sm text-black ">
           {service?.description?.length > 100
             ? `${service?.description.slice(0, 100)}...`
             : service?.description}
@@ -44,7 +44,7 @@ const ServiceCard = ({ service }) => {
 
         {/* Pricing  */}
         <div className="mt-4 flex justify-between items-center">
-          <p className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300">
+          <p className="flex items-center gap-2 text-sm font-bold text-black ">
             <FaDollarSign className="text-green-500" />{service?.price}
           </p>
         </div>
@@ -57,10 +57,10 @@ const ServiceCard = ({ service }) => {
             className="w-10 h-10 rounded-full object-cover"
           />
           <div className="ml-3">
-            <p className="text-sm text-gray-700 dark:text-gray-300">
+            <p className="text-sm text-black ">
               {service?.buyer?.name}
             </p>
-            <p className="text-xs text-gray-500">{service?.area}</p>
+            <p className="text-xs text-black">{service?.area}</p>
           </div>
         </div>
 

@@ -3,11 +3,13 @@ import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet";
+import LoadingSpinner from "../components/LoadingSpinner";
 import useAuth from "../hooks/useAuth";
 
 const MyBookedServices = () => {
   const { user } = useAuth();
   const [services, setServices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchAllServices = async () => {
@@ -17,6 +19,7 @@ const MyBookedServices = () => {
           { withCredentials: true }
         );
         setServices(data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching services:", error);
       }
@@ -25,6 +28,10 @@ const MyBookedServices = () => {
   }, [user]);
 
   console.log(services);
+
+  {
+    isLoading ? <LoadingSpinner></LoadingSpinner> : "";
+  }
 
   return (
     <section className="container px-4 mx-auto py-12">
@@ -95,10 +102,10 @@ const MyBookedServices = () => {
                   <span
                     className={`px-3 py-1  ${
                       service.category === "Web Development" &&
-                      "text-blue-500 bg-blue-100/60"
+                      "text-blue-600 bg-blue-100/60"
                     } ${
                       service.category === "Graphics Design" &&
-                      "text-green-500 bg-blue-100/60"
+                      "text-green-600 bg-blue-100/60"
                     } ${
                       service.category === "Digital Marketing" &&
                       "text-red-500 bg-blue-100/60"

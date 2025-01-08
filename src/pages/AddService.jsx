@@ -58,17 +58,17 @@ const AddService = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 via-white to-blue-50">
+    <div className="flex justify-center items-center min-h-screen">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Add your Service Here - Digital World Technology</title>
         <link rel="canonical" href="https://fullstackservice1.web.app" />
       </Helmet>
       <section className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-gray-700 text-center">
+        <h2 className="text-2xl font-bold text-black text-center">
           Add a Service
         </h2>
-        <p className="text-sm text-gray-500 text-center mt-2 mb-6">
+        <p className="text-sm text-black text-center mt-2 mb-6">
           Fill out the details below to post a new service.
         </p>
         <form onSubmit={handleSubmit}>
@@ -76,7 +76,7 @@ const AddService = () => {
             {/* service Title */}
             <div>
               <label
-                className="block text-sm font-medium text-gray-600"
+                className="block text-sm font-medium text-black"
                 htmlFor="service"
               >
                 Service Name
@@ -94,7 +94,7 @@ const AddService = () => {
             {/* Image URL of the Service  */}
             <div>
               <label
-                className="block text-sm font-medium text-gray-600"
+                className="block text-sm font-medium text-black"
                 htmlFor="emailAddress"
               >
                 Image URL of the Service
@@ -110,7 +110,7 @@ const AddService = () => {
             </div>
             {/* Deadline */}
             <div>
-              <label className="block text-sm font-medium text-gray-600 ">
+              <label className="block text-sm font-medium text-black ">
                 Deadline
               </label>
               <div className="w-full">
@@ -125,7 +125,7 @@ const AddService = () => {
             {/* Category */}
             <div>
               <label
-                className="block text-sm font-medium text-gray-600"
+                className="block text-sm font-medium text-black"
                 htmlFor="category"
               >
                 Category
@@ -145,7 +145,7 @@ const AddService = () => {
             {/*  Price */}
             <div>
               <label
-                className="block text-sm font-medium text-gray-600"
+                className="block text-sm font-medium text-black"
                 htmlFor="min_price"
               >
                 Price
@@ -163,7 +163,7 @@ const AddService = () => {
             {/* Service Area */}
             <div>
               <label
-                className="block text-sm font-medium text-gray-600"
+                className="block text-sm font-medium text-black"
                 htmlFor="area"
               >
                 Service Area
@@ -188,7 +188,7 @@ const AddService = () => {
           {/* Description */}
           <div className="my-4">
             <label
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium text-black"
               htmlFor="description"
             >
               Description
