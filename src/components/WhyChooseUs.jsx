@@ -26,12 +26,14 @@ const WhyChooseUs = () => {
   return (
     <div className=" py-10 ">
       <div className=" text-center">
-        <h2 className="text-3xl font-bold text-black mb-4">
-          Why Choose Us?
+      <h2 className="text-3xl font-bold text-blue-900 mb-4">
+      Why Choose Us?
         </h2>
-        <p className="text-black mb-8">
-          Discover why our clients love working with us.
+        <p className="text-blue-600 font-semibold mb-8 tracking-widest">
+        Discover why our clients love working with us.
         </p>
+        
+       
         <div className="grid gap-6 md:grid-cols-3">
           {features.map((feature) => (
             <div

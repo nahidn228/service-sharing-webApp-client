@@ -2,8 +2,16 @@ import { FaFacebook, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa";
 import { SiMinutemailer } from "react-icons/si";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import Swal from "sweetalert2";
 
 const NewFooter = () => {
+  const handleSubscribe = () => {
+    Swal.fire({
+      title: "Thank you for Subscribe!",
+      icon: "success",
+      draggable: true,
+    });
+  };
   return (
     <footer className="bg-white text-black py-16">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 px-6">
@@ -14,19 +22,20 @@ const NewFooter = () => {
             data-aos="fade-up"
             data-aos-duration="1500"
           >
-             <Typewriter
-                words={["Digital World Technology"]}
-                loop={true}
-                cursor
-                cursorStyle="|"
-                typeSpeed={100}
-                deleteSpeed={50}
-                delaySpeed={1000}
-              />
-            
+            <Typewriter
+              words={["Digital World Technology"]}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={100}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
           </h1>
           <p className="text-black py-4">
-            Digital World Technology offers cutting-edge digital solutions for businesses and individuals. We specialize in web development, app creation, and digital marketing.
+            Digital World Technology offers cutting-edge digital solutions for
+            businesses and individuals. We specialize in web development, app
+            creation, and digital marketing.
           </p>
           <a href="/contact" className="text-blue-600 hover:underline">
             Contact our support team
@@ -102,7 +111,10 @@ const NewFooter = () => {
                 className="flex-1 p-2 border border-gray-300 rounded-l-lg focus:ring focus:ring-blue-300"
                 placeholder="Enter your email"
               />
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300">
+              <button
+                onClick={handleSubscribe}
+                className="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300"
+              >
                 <SiMinutemailer />
               </button>
             </div>

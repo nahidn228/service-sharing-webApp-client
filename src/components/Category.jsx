@@ -1,5 +1,6 @@
 import { FaLaptopCode, FaLaptopHouse } from "react-icons/fa";
 import { SiAltiumdesigner } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const Category = () => {
   return (
@@ -21,9 +22,9 @@ const Category = () => {
             <p className="text-gray-600">
               Our team consists of experienced and certified professionals.
             </p>
-            <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 shadow-md transition-colors duration-300">
+            <Link to="/services" className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 shadow-md transition-colors duration-300">
               Learn More
-            </button>
+            </Link>
           </div>
           {/* Web Development */}
           <div className="shadow-lg rounded-xl p-8 flex flex-col items-center text-center bg-white hover:scale-105 transition-transform duration-300">
@@ -36,9 +37,9 @@ const Category = () => {
             <p className="text-gray-600">
               Our team consists of experienced and certified professionals.
             </p>
-            <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 shadow-md transition-colors duration-300">
+            <Link to="/services" className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 shadow-md transition-colors duration-300">
               Learn More
-            </button>
+            </Link>
           </div>
           {/* Graphic Design */}
           <div className="shadow-lg rounded-xl p-8 flex flex-col items-center text-center bg-white hover:scale-105 transition-transform duration-300">
@@ -51,9 +52,9 @@ const Category = () => {
             <p className="text-gray-600">
               Our team consists of experienced and certified professionals.
             </p>
-            <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 shadow-md transition-colors duration-300">
+            <Link to="/services" className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 shadow-md transition-colors duration-300">
               Learn More
-            </button>
+            </Link>
           </div>
         </div>
       </div>

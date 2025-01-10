@@ -56,12 +56,14 @@ const Testimonials = () => {
   return (
     <div className=" py-10 ">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold text-black mb-4">
-          What Our Clients Say
+      <h2 className="text-3xl font-bold text-blue-900 mb-4">
+      What Our Clients Says
         </h2>
-        <p className="text-black mb-8">
-          Hear from some of our happy clients.
+        <p className="text-blue-600 font-semibold mb-8 tracking-widest">
+        Hear from some of our happy clients.
         </p>
+       
+      
         <Swiper
           slidesPerView={1}
           spaceBetween={20}

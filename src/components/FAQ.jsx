@@ -38,55 +38,61 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center py-8 px-4">
-      {/* Lottie Animation */}
-      <div>
-        <Lottie animationData={faqLottie} className="w-full max-w-lg mx-auto" />
-      </div>
+    <section className="container mx-auto  items-center py-8 px-4">
+      <h2 className="text-3xl font-bold text-blue-900 text-center">
+        Frequently Asked Questions
+      </h2>
 
-      {/* FAQ Section */}
-      <div>
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-black mb-6">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-md rounded-lg p-4 border border-gray-200 transition-all duration-700"
-            >
-              {/* FAQ Question */}
-              <button
-                className="flex justify-between w-full text-black font-medium"
-                onClick={() => toggleFAQ(index)}
-                aria-expanded={activeIndex === index}
-                aria-controls={`faq-${index}`}
-              >
-                <span>{faq.question}</span>
-                <span
-                  className={`transform transition-transform duration-300 ${
-                    activeIndex === index ? "rotate-180" : ""
-                  }`}
-                >
-                  ▼
-                </span>
-              </button>
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center ">
+        {/* Lottie Animation */}
+        <div>
+          <Lottie
+            animationData={faqLottie}
+            className="w-full max-w-lg mx-auto"
+          />
+        </div>
 
-              {/* FAQ Answer */}
+        {/* FAQ Section */}
+        <div>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
               <div
-                id={`faq-${index}`}
-                role="region"
-                className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                  activeIndex === index ? "max-h-[500px]" : "max-h-0"
-                }`}
-                style={{
-                  maxHeight: activeIndex === index ? "500px" : "0",
-                }}
+                key={index}
+                className="bg-white shadow-md rounded-lg p-4 border border-gray-200 transition-all duration-700"
               >
-                <p className="mt-4 text-black">{faq.answer}</p>
+                {/* FAQ Question */}
+                <button
+                  className="flex justify-between w-full text-black font-medium"
+                  onClick={() => toggleFAQ(index)}
+                  aria-expanded={activeIndex === index}
+                  aria-controls={`faq-${index}`}
+                >
+                  <span>{faq.question}</span>
+                  <span
+                    className={`transform transition-transform duration-300 ${
+                      activeIndex === index ? "rotate-180" : ""
+                    }`}
+                  >
+                    ▼
+                  </span>
+                </button>
+
+                {/* FAQ Answer */}
+                <div
+                  id={`faq-${index}`}
+                  role="region"
+                  className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                    activeIndex === index ? "max-h-[500px]" : "max-h-0"
+                  }`}
+                  style={{
+                    maxHeight: activeIndex === index ? "500px" : "0",
+                  }}
+                >
+                  <p className="mt-4 text-black">{faq.answer}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
