@@ -164,12 +164,11 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <NavLink
-          to="/"
-          className=" normal-case text-lg md:text-2xl font-extrabold text-black hover:text-blue-500 flex items-center "
-        >
-          <img className="w-14 h-auto hidden md:flex" src={logo} alt="Logo" />
-          DW technology
+        <NavLink to="/" className="flex items-center gap-2">
+          <img className="w-10 h-auto" src={logo} alt="Logo" />
+          <span className="text-lg md:text-2xl font-extrabold">
+            DW Technology
+          </span>
         </NavLink>
       </div>
 

@@ -1,6 +1,7 @@
 import { FaFacebook, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa";
 import { SiMinutemailer } from "react-icons/si";
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 const NewFooter = () => {
   return (
@@ -9,11 +10,20 @@ const NewFooter = () => {
         {/* Column 1: About Section */}
         <div data-aos="fade-up" data-aos-duration="1000">
           <h1
-            className="text-xl md:text-3xl font-extrabold tracking-wide"
+            className="text-xl md:text-2xl font-extrabold tracking-wide"
             data-aos="fade-up"
             data-aos-duration="1500"
           >
-            DW Technology
+             <Typewriter
+                words={["Digital World Technology"]}
+                loop={true}
+                cursor
+                cursorStyle="|"
+                typeSpeed={100}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            
           </h1>
           <p className="text-gray-600 py-4">
             Digital World Technology offers cutting-edge digital solutions for businesses and individuals. We specialize in web development, app creation, and digital marketing.
