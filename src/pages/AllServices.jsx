@@ -39,7 +39,7 @@ const AllServices = () => {
   console.log(services);
 
   return (
-    <div className="container bg-white px-6 py-10 mx-auto  flex flex-col justify-between min-h-screen">
+    <div className="container bg-white  py-10 mx-auto  flex flex-col justify-between min-h-screen">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Our Services - Digital World Technology</title>

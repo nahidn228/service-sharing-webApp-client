@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
-import { FaClock, FaDollarSign } from "react-icons/fa";
+import { FaClock, FaDollarSign, FaLocationArrow, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
@@ -60,8 +60,13 @@ const ServiceCard = ({ service }) => {
             className="w-10 h-10 rounded-full object-cover"
           />
           <div className="ml-3">
-            <p className="text-sm text-black ">{service?.buyer?.name}</p>
-            <p className="text-xs text-black">{service?.area}</p>
+            <p className="text-sm text-black flex items-center gap-1">
+              <FaUser className="text-xs" /> {service?.buyer?.name}
+            </p>
+            <p className="text-xs flex gap-1 items-center text-black">
+              {" "}
+              <FaLocationArrow className="text-xs" /> {service?.area}
+            </p>
           </div>
         </div>
 

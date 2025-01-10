@@ -103,7 +103,7 @@ const ManageService = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Manage Service - Digital World Technology</title>
-        <link rel="canonical" href="https://fullstackservice1.web.app" />
+       
       </Helmet>
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-black ">Manage Services</h2>
@@ -113,7 +113,7 @@ const ManageService = () => {
         </span>
       </div>
 
-      <div className="flex flex-col mt-6 pb-6 overflow-x-auto">
+      <div className="flex flex-col mt-6 pb-6 overflow-x-auto md:overflow-hidden">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden border border-gray-200  md:rounded-lg">

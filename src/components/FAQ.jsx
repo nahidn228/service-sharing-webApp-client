@@ -1,4 +1,6 @@
+import Lottie from "lottie-react";
 import { useState } from "react";
+import faqLottie from "../assets/faq.json";
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -36,7 +38,10 @@ const FAQ = () => {
   ];
 
   return (
-    <section className=" py-10">
+    <section className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <div>
+        <Lottie animationData={faqLottie} className="w-full" />
+      </div>
       <div className="">
         <h2 className="text-2xl font-bold text-center text-black mb-8">
           Frequently Asked Questions
