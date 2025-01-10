@@ -1,4 +1,5 @@
 // Import Swiper React components
+import { NavLink } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -15,7 +16,7 @@ import bgimg3 from "../assets/images/carousel3.jpg";
 
 export default function Carousel() {
   return (
-    <div className=" py-10">
+    <div className="">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -35,23 +36,26 @@ export default function Carousel() {
         {/* Slide 1 */}
         <SwiperSlide>
           <div
-            className="relative h-[500px] bg-cover bg-center flex items-center justify-center text-center"
+            className="relative h-[450px] bg-cover bg-center flex items-center justify-center text-center"
             style={{ backgroundImage: `url(${bgimg1})` }}
           >
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/80 to-transparent"></div>
             {/* Text Content */}
-            <div className="z-10 px-6">
-              <h2 className="text-4xl font-bold text-white sm:text-5xl drop-shadow-xl">
+            <div className="z-10 px-6 w-full md:w-3/4 mx-auto">
+              <h2 className="text-2xl font-bold text-white md:text-5xl drop-shadow-xl">
                 Get Your Web Development Projects Done in Minutes
               </h2>
               <p className="mt-4 text-lg text-gray-200 sm:text-xl drop-shadow-md">
                 Build modern and responsive websites effortlessly with our team
                 of experts.
               </p>
-              <button className="mt-6 px-6 py-3 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+              <NavLink
+                to="/services"
+                className="mt-6 px-6 btn border-none text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition"
+              >
                 Get Started
-              </button>
+              </NavLink>
             </div>
           </div>
         </SwiperSlide>
@@ -59,23 +63,26 @@ export default function Carousel() {
         {/* Slide 2 */}
         <SwiperSlide>
           <div
-            className="relative h-[500px] bg-cover bg-center flex items-center justify-center text-center"
+            className="relative h-[450px] bg-cover bg-center flex items-center justify-center text-center"
             style={{ backgroundImage: `url(${bgimg2})` }}
           >
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/80 to-transparent"></div>
             {/* Text Content */}
-            <div className="z-10 px-6">
-              <h2 className="text-4xl font-bold text-white sm:text-5xl drop-shadow-xl">
+            <div className="z-10 px-6 w-full md:w-3/4 mx-auto">
+              <h2 className="text-2xl font-bold text-white md:text-5xl drop-shadow-xl">
                 Get Your Graphics Design Projects Done in Minutes
               </h2>
               <p className="mt-4 text-lg text-gray-200 sm:text-xl drop-shadow-md">
                 Transform your ideas into stunning visuals with professional
                 design services.
               </p>
-              <button className="mt-6 px-6 py-3 text-lg font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition">
+              <NavLink
+                to="/services"
+                className="mt-6 px-6  btn border-none text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-purple-700 transition"
+              >
                 Learn More
-              </button>
+              </NavLink>
             </div>
           </div>
         </SwiperSlide>
@@ -83,22 +90,25 @@ export default function Carousel() {
         {/* Slide 3 */}
         <SwiperSlide>
           <div
-            className="relative h-[500px] bg-cover bg-center flex items-center justify-center text-center"
+            className="relative h-[450px] bg-cover bg-center flex items-center justify-center text-center"
             style={{ backgroundImage: `url(${bgimg3})` }}
           >
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/85 to-transparent"></div>
             {/* Text Content */}
-            <div className="z-10 px-6">
-              <h2 className="text-4xl font-bold text-white sm:text-5xl drop-shadow-xl">
+            <div className="z-10 px-6 w-full md:w-3/4 mx-auto">
+              <h2 className="text-2xl font-bold text-white md:text-5xl  drop-shadow-xl">
                 Start Your Digital Marketing Campaigns Up and Running
               </h2>
               <p className="mt-4 text-lg text-gray-200 sm:text-xl drop-shadow-md">
                 Reach your audience and achieve your marketing goals with ease.
               </p>
-              <button className="mt-6 px-6 py-3 text-lg font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 transition">
+              <NavLink
+                to="/services"
+                className="mt-6 px-6 btn text-lg font-medium text-white bg-blue-600 border-none rounded-lg hover:bg-green-700 transition"
+              >
                 Explore Now
-              </button>
+              </NavLink>
             </div>
           </div>
         </SwiperSlide>

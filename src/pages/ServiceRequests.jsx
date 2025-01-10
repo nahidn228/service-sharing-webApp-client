@@ -87,7 +87,7 @@ const ServiceRequests = () => {
   // console.log(services);
 
   return (
-    <section className="container px-4 mx-auto py-12">
+    <section className="container px-4 md:px-0 mx-auto py-12">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Service To-Do - Digital World Technology</title>
@@ -102,7 +102,7 @@ const ServiceRequests = () => {
       </div>
 
       {/* Table Section */}
-      <div className="flex flex-col mt-8">
+      <div className="flex flex-col mt-8 px-4 md:px-0 mx-auto">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">

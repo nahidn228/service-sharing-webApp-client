@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet";
-import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 const AddService = () => {
   const { id } = useParams();
   const [startDate, setStartDate] = useState(new Date());
@@ -46,21 +46,29 @@ const AddService = () => {
       description,
     };
     console.log(formData);
-    try {
-      // make a put request
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/update-service/${id}`,
-        formData,
-        { withCredentials: true }
-      );
-      console.log(data);
-      form.reset();
-      toast.success("Service Added Successfully!!!");
-      navigate("/manageService");
-    } catch (err) {
-      console.log(err);
-      toast.error(err.message);
-    }
+    // try {
+    //   // make a put request
+    //   const { data } = await axios.put(
+    //     `${import.meta.env.VITE_API_URL}/update-service/${id}`,
+    //     formData,
+    //     { withCredentials: true }
+    //   );
+    //   console.log(data);
+    //   form.reset();
+    //   toast.success("Service Update Successfully!!!");
+    //   navigate("/manageService");
+    // } catch (err) {
+    //   console.log(err);
+    //   toast.error(err.message);
+    // }
+
+    //Add this for testing
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "You do not have permission to this action !",
+    });
+    navigate("/manageService");
   };
 
   return (

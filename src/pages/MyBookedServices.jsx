@@ -34,7 +34,7 @@ const MyBookedServices = () => {
   }
 
   return (
-    <section className="container px-4 mx-auto py-12">
+    <section className="container px-4 md:px-0 mx-auto  py-12">
       <Helmet>
         <meta charSet="utf-8" />
         <title>My Booked Service - Digital World Technology</title>
@@ -51,8 +51,8 @@ const MyBookedServices = () => {
       </div>
 
       {/* Table Container */}
-      <div className="overflow-hidden border border-gray-200 dark:border-gray-700 rounded-lg">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+      <div className="overflow-x-auto border border-gray-200 dark:border-gray-700 rounded-lg">
+        <table className="min-w-full divide-y overflow-x-auto  divide-gray-200 dark:divide-gray-700">
           {/* Table Header */}
           <thead className="">
             <tr>
@@ -100,7 +100,7 @@ const MyBookedServices = () => {
                 </td>
                 <td className="px-4 py-4 text-sm">
                   <span
-                    className={`px-3 py-1  ${
+                    className={`px-0 md:px-3 py-1  ${
                       service.category === "Web Development" &&
                       "text-blue-600 bg-blue-100/60"
                     } ${

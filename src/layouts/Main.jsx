@@ -1,14 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import NewNavBar from "../components/NewNavbar";
 
 const Main = () => {
   return (
     <div>
       {/* Navbar */}
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
+      <NewNavBar></NewNavBar>
       {/* Outlet */}
-      <div className="min-h-[calc(100vh-306px)] bg-white  px-4 mx-auto">
+      <div className="min-h-screen bg-white ">
         <Outlet />
       </div>
       {/* Footer */}

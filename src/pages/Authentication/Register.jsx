@@ -1,12 +1,12 @@
 import Lottie from "lottie-react";
 import { useContext } from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logooooo.png";
 import registerLottieData from "../../assets/register.json";
 import { AuthContext } from "../../providers/AuthProvider";
-import { Helmet } from "react-helmet";
-import { Typewriter } from "react-simple-typewriter";
+// import { Typewriter } from "react-simple-typewriter";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Registration = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r  py-12 px-4">
-        <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Register - Digital World Technology</title>
         <link rel="canonical" href="https://fullstackservice1.web.app" />
@@ -57,7 +57,8 @@ const Registration = () => {
           </div>
 
           <p className="mt-3 text-2xl text-center text-black font-semibold">
-          <Typewriter
+            Create Your Free Account
+            {/* <Typewriter
                   words={[`Create Your Free Account`]}
                   loop={Infinity}
                   cursor
@@ -65,14 +66,13 @@ const Registration = () => {
                   typeSpeed={100}
                   deleteSpeed={100}
                   delaySpeed={1000}
-                />
-            
+                /> */}
           </p>
 
           {/* Google Sign-in Button */}
           <div
             onClick={handleGoogleSignIn}
-            className="flex cursor-pointer items-center justify-center mt-6 text-gray-600 transition-colors duration-300 transform border rounded-xl hover:bg-gray-100 shadow-md"
+            className="flex cursor-pointer items-center justify-center mt-6 text-black transition-colors duration-300 transform border rounded-xl hover:bg-[#3a31d8] hover:text-white shadow-md"
           >
             <div className="px-4 py-2">
               <svg className="w-6 h-6" viewBox="0 0 40 40">
@@ -110,7 +110,10 @@ const Registration = () => {
           {/* Registration Form */}
           <form onSubmit={handleSignUp} className="mt-6 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-900" htmlFor="name">
+              <label
+                className="block text-sm font-medium text-black"
+                htmlFor="name"
+              >
                 Full Name
               </label>
               <input
@@ -118,12 +121,15 @@ const Registration = () => {
                 name="name"
                 type="text"
                 autoComplete="name"
-                className="block w-full px-4 py-2 text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="block w-full px-4 py-2 text-black border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-900" htmlFor="photo">
+              <label
+                className="block text-sm font-medium text-black"
+                htmlFor="photo"
+              >
                 Photo URL
               </label>
               <input
@@ -131,12 +137,15 @@ const Registration = () => {
                 name="photo"
                 type="text"
                 autoComplete="photo"
-                className="block w-full px-4 py-2 text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="block w-full px-4 py-2 text-black border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-900" htmlFor="email">
+              <label
+                className="block text-sm font-medium text-black"
+                htmlFor="email"
+              >
                 Email Address
               </label>
               <input
@@ -144,12 +153,15 @@ const Registration = () => {
                 name="email"
                 type="email"
                 autoComplete="email"
-                className="block w-full px-4 py-2 text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="block w-full px-4 py-2 text-black border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-900" htmlFor="password">
+              <label
+                className="block text-sm font-medium text-black"
+                htmlFor="password"
+              >
                 Password
               </label>
               <input
@@ -157,7 +169,7 @@ const Registration = () => {
                 name="password"
                 type="password"
                 autoComplete="current-password"
-                className="block w-full px-4 py-2 text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="block w-full px-4 py-2 text-black border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
@@ -173,7 +185,10 @@ const Registration = () => {
 
           <p className="mt-6 text-sm text-center text-gray-500">
             Already have an account?{" "}
-            <Link to="/login" className="font-medium text-blue-600 hover:underline">
+            <Link
+              to="/login"
+              className="font-medium text-blue-600 hover:underline"
+            >
               Log In
             </Link>
           </p>

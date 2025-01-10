@@ -109,13 +109,13 @@ const AddService = () => {
               />
             </div>
             {/* Deadline */}
-            <div>
+            <div className="w-full">
               <label className="block text-sm font-medium text-black ">
                 Deadline
               </label>
               <div className="w-full">
                 <DatePicker
-                  className="w-full  mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+                  className="min-w-full  mt-2 px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
                 />

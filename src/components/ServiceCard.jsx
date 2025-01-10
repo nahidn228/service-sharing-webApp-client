@@ -34,18 +34,21 @@ const ServiceCard = ({ service }) => {
       {/* Main Content */}
       <div className="mt-4">
         <h1 className="text-lg font-semibold text-black ">
-          {service?.name}
+          {service?.name?.length > 20
+            ? `${service?.name.slice(0, 18)}...`
+            : service?.name}
         </h1>
         <p className="mt-2 text-sm text-black ">
-          {service?.description?.length > 100
-            ? `${service?.description.slice(0, 100)}...`
+          {service?.description?.length > 60
+            ? `${service?.description.slice(0, 60)}...`
             : service?.description}
         </p>
 
         {/* Pricing  */}
         <div className="mt-4 flex justify-between items-center">
           <p className="flex items-center gap-2 text-sm font-bold text-black ">
-            <FaDollarSign className="text-green-500" />{service?.price}
+            <FaDollarSign className="text-green-500" />
+            {service?.price}
           </p>
         </div>
 
@@ -57,9 +60,7 @@ const ServiceCard = ({ service }) => {
             className="w-10 h-10 rounded-full object-cover"
           />
           <div className="ml-3">
-            <p className="text-sm text-black ">
-              {service?.buyer?.name}
-            </p>
+            <p className="text-sm text-black ">{service?.buyer?.name}</p>
             <p className="text-xs text-black">{service?.area}</p>
           </div>
         </div>

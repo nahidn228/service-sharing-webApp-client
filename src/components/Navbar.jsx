@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Typewriter } from "react-simple-typewriter";
+// import { Typewriter } from "react-simple-typewriter";
 import logo from "../assets/images/logooooo.png";
 import { AuthContext } from "../providers/AuthProvider";
 
@@ -30,11 +30,12 @@ const Navbar = () => {
       <div className="flex-1">
         <NavLink
           to="/"
-          className="flex items-center gap-2 text-black dark:text-gray-200"
+          className="flex items-center gap-1 text-black dark:text-gray-200"
         >
           <img className="w-14 h-auto" src={logo} alt="Logo" />
           <span className="text-xl font-bold hidden md:flex">
-            <Typewriter
+            DW technology
+            {/* <Typewriter
               words={["Digital World Technology"]}
               loop={true}
               cursor
@@ -42,7 +43,7 @@ const Navbar = () => {
               typeSpeed={100}
               deleteSpeed={50}
               delaySpeed={1000}
-            />
+            /> */}
           </span>
         </NavLink>
       </div>
@@ -96,9 +97,9 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `hover:text-blue-600 transition-colors duration-300 ${
-                  isActive ? "bg-neutral font-semibold text-blue-500" : ""
-                } hidden md:flex btn btn-outline btn-info btn-sm md:btn-md`
+                ` transition-colors duration-300 ${
+                  isActive ? "" : ""
+                } hidden md:flex `
               }
             >
               Home
@@ -109,8 +110,8 @@ const Navbar = () => {
               to="/services"
               className={({ isActive }) =>
                 `hover:text-blue-600 transition-colors duration-300 ${
-                  isActive ? "bg-neutral font-semibold text-blue-500" : ""
-                } btn btn-outline btn-info btn-sm md:btn-md`
+                  isActive ? "" : ""
+                } `
               }
             >
               Services

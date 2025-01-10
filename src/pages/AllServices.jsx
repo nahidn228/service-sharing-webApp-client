@@ -10,6 +10,7 @@ const AllServices = () => {
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [singleView, setSingleView] = useState("singleView");
 
   useEffect(() => {
     const fetchAllServices = async () => {
@@ -38,11 +39,10 @@ const AllServices = () => {
   console.log(services);
 
   return (
-    <div className="container bg-white px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between">
+    <div className="container bg-white px-6 py-10 mx-auto  flex flex-col justify-between min-h-screen">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Our Services - Digital World Technology</title>
-        
       </Helmet>
       {isLoading ? (
         <LoadingSpinner></LoadingSpinner>
@@ -85,13 +85,38 @@ const AllServices = () => {
               >
                 Reset
               </button>
+
+              <div className="join">
+                <input
+                  className="join-item btn"
+                  onClick={() => setSingleView("singleView")}
+                  type="radio"
+                  name="options"
+                  aria-label="Single View"
+                />
+                <input
+                  className="join-item btn"
+                  onClick={() => setSingleView("gridView")}
+                  type="radio"
+                  name="options"
+                  aria-label="Grid View"
+                />
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 mt-8 ">
-              {services.map((service) => (
-                <ServiceCard key={service._id} service={service} />
-              ))}
-            </div>
+            {singleView === "singleView" ? (
+              <div className="grid grid-cols-1 gap-6 mt-8 ">
+                {services.map((service) => (
+                  <ServiceCard key={service._id} service={service} />
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 ">
+                {services.map((service) => (
+                  <ServiceCard key={service._id} service={service} />
+                ))}
+              </div>
+            )}
           </div>
         </>
       )}

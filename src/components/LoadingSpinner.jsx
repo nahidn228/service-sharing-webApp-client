@@ -14,7 +14,7 @@ const LoadingSpinner = () => {
 
         {/* Loading Text */}
         <span className="text-2xl font-semibold text-black dark:text-gray-300 tracking-wider">
-          Please wait...
+           Please wait...
         </span>
       </div>
     </div>

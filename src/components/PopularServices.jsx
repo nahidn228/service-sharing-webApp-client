@@ -17,14 +17,14 @@ const PopularServices = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-10">
-      <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold text-black">Popular Services</h2>
-        <p className="text-black mt-2">
+    <div className=" py-10">
+      <div className="text-center my-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-black">Popular Services</h2>
+        <p className="text-black mt-2 font-normal text-base md:text-lg">
           Explore our most popular services tailored for your needs.
         </p>
       </div>
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-2 my-10">
         {services.map((service) => (
           <div
             key={service._id}

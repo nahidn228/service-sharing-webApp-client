@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import LoadingSpinner from "../components/LoadingSpinner";
 import useAuth from "../hooks/useAuth";
 
@@ -26,25 +27,35 @@ const ManageService = () => {
   }, [user]);
 
   const handleDelete = (id) => {
+    console.log(id);
     const confirmDelete = async () => {
-      try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/delete-service/${id}`,
-          { withCredentials: true }
-        );
-        console.log(data);
+      // try {
+      //   const { data } = await axios.get(
+      //     `${import.meta.env.VITE_API_URL}/delete-service/${id}`,
+      //     { withCredentials: true }
+      //   );
+      //   console.log(data);
 
-        const updatedServices = services.filter(
-          (service) => service._id !== id
-        );
-        setServices(updatedServices);
-        toast.dismiss(); // Close the toast after successful deletion
-        toast.success("Service Deleted Successfully!");
-      } catch (err) {
-        console.log(err.message);
-        toast.dismiss(); // Close the toast if there's an error
-        toast.error(err.message);
-      }
+      //   const updatedServices = services.filter(
+      //     (service) => service._id !== id
+      //   );
+      //   setServices(updatedServices);
+      //   toast.dismiss(); // Close the toast after successful deletion
+      //   toast.success("Service Deleted Successfully!");
+      // } catch (err) {
+      //   console.log(err.message);
+      //   toast.dismiss(); // Close the toast if there's an error
+      //   toast.error(err.message);
+      // }
+
+      toast.dismiss();
+
+      //Add this for testing
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You do not have permission to this action !",
+      });
     };
 
     const cancelDelete = () => {
@@ -88,7 +99,7 @@ const ManageService = () => {
   }
 
   return (
-    <section className=" pt-12 bg-white container px-4 mx-auto">
+    <section className=" pt-12 bg-white container px-4 md:px-0 mx-auto   min-h-screen">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Manage Service - Digital World Technology</title>
@@ -102,11 +113,11 @@ const ManageService = () => {
         </span>
       </div>
 
-      <div className="flex flex-col mt-6 pb-6">
+      <div className="flex flex-col mt-6 pb-6 overflow-x-auto">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden border border-gray-200  md:rounded-lg">
-              <table className="min-w-full  divide-y divide-gray-200">
+              <table className="min-w-full overflow-x-auto divide-y divide-gray-200">
                 <thead className="bg-white">
                   <tr>
                     <th
