@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-white bg-transparent backdrop-blur-md shadow-md sticky top-0 z-50 max-w-screen-xl mx-auto">
+    <div className="navbar bg-white bg-transparent backdrop-blur-xl shadow-md sticky top-0 z-50 max-w-screen-xl mx-auto">
       {/* Logo */}
       <div className="flex-1">
         <NavLink
