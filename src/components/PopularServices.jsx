@@ -31,12 +31,13 @@ const PopularServices = () => {
     <section className="py-10">
       {/* Header */}
       <div className="text-center my-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-black">
+      <h2 className="text-3xl font-bold text-blue-900 mb-4">
           Popular Services
         </h2>
-        <p className="text-black mt-2 font-normal text-base md:text-lg">
+        <p className="text-blue-600 font-semibold mb-8 tracking-widest">
           Explore our most popular services tailored for your needs.
         </p>
+       
       </div>
 
       {/* Loading or Error State */}
@@ -109,11 +110,9 @@ const PopularServices = () => {
 
       {/* Show All Button */}
       {!loading && !error && (
-        <div className="text-center mt-8">
+        <div className="text-center mt-12">
           <Link to="/services">
-            <button
-              className={`bg-gray-800 hover:bg-gray-700 text-lg ${buttonClasses}`}
-            >
+            <button className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 shadow-md transition-transform transform hover:scale-105">
               Show All
             </button>
           </Link>

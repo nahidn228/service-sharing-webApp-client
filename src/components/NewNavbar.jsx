@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
+import { FaCode } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import navImg from "../assets/images/user.png";
 import { AuthContext } from "./../providers/AuthProvider";
 
 // import { Typewriter } from "react-simple-typewriter";
-import logo from "../assets/images/logooooo.png";
+// import logo from "../assets/images/logooooo.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -165,10 +166,23 @@ const Navbar = () => {
           </ul>
         </div>
         <NavLink to="/" className="flex items-center gap-2">
-          <img className="w-10 h-auto" src={logo} alt="Logo" />
+          {/* <img className="w-10 h-auto" src={logo} alt="Logo" />
           <span className="text-lg md:text-2xl font-extrabold">
             DW Technology
-          </span>
+          </span> */}
+         
+
+          {/* Icon */}
+          <ul className="flex  items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full shadow-lg">
+            <FaCode size={24} />
+          </ul>
+          {/* Text */}
+          <div>
+          <h1 className=" hidden md:flex gap-1 text-2xl font-bold text-blue-600">
+            <span className="text-black">N</span>H <span className="text-black">Solution</span> 
+          </h1>
+          <p className='text-xs font-medium text-blue-500 hidden md:flex'>IT Service & Technology</p>
+          </div>
         </NavLink>
       </div>
 

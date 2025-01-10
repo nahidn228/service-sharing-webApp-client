@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import Carousel from "../components/Carousel";
+import Category from "../components/Category";
 import FAQ from "../components/FAQ";
 import PopularServices from "../components/PopularServices";
 import Testimonials from "../components/Testimonials";
@@ -25,6 +26,16 @@ const Home = () => {
         <Carousel></Carousel>
       </motion.div>
 
+      {/* Category */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ amount: 0.2 }} // Trigger animation with 20% of the element visible
+        transition={{ duration: 0.6 }}
+        key="popular-services"
+      >
+        <Category />
+      </motion.div>
       {/* Popular Services */}
       <motion.div
         initial={{ opacity: 0 }}
