@@ -65,12 +65,11 @@ const AddService = () => {
         <link rel="canonical" href="https://fullstackservice1.web.app" />
       </Helmet>
       <section className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-black text-center">
-          Add a Service
-        </h2>
-        <p className="text-sm text-black text-center mt-2 mb-6">
+        <h2 className="text-3xl text-center font-bold text-blue-900 mb-4">Add a Service</h2>
+        <p className="text-blue-600 text-center font-semibold mb-8 tracking-widest">
           Fill out the details below to post a new service.
         </p>
+
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* service Title */}

@@ -94,7 +94,7 @@ const ServiceRequests = () => {
         <link rel="canonical" href="https://fullstackservice1.web.app" />
       </Helmet>
       {/* Header Section */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-2">
         <h2 className="text-xl font-semibold text-black">Service To-Do</h2>
         <span className="px-3 py-1 text-xs font-medium text-blue-600 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
           {services.length} Requests
