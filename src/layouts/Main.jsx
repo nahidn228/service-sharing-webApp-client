@@ -9,7 +9,7 @@ const Main = () => {
       {/* <Navbar></Navbar> */}
       <NewNavBar></NewNavBar>
       {/* Outlet */}
-      <div className="min-h-screen bg-white ">
+      <div className="min-h-screen bg-white max-w-screen-xl mx-auto">
         <Outlet />
       </div>
       {/* Footer */}
