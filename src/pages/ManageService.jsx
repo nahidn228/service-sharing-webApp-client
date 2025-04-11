@@ -103,7 +103,6 @@ const ManageService = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Manage Service - Digital World Technology</title>
-       
       </Helmet>
       <div className="flex items-center gap-x-3 px-2">
         <h2 className="text-lg font-medium text-black ">Manage Services</h2>
